@@ -1,0 +1,105 @@
+
+
+<div class="containerBD">
+    <div class="ls">
+      <p class="tit">Liste Des  Produits</p>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modify">Ajouter</button>
+    </div>
+    
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <tr *ngFor="let pdr of produits | paginate: { itemsPerPage: 5, currentPage: pages }">
+                <td>{{pdr.name}}</td>
+                <td>{{pdr.prix}}</td>
+                <td>{{pdr.category}}</td>
+                <td>{{pdr.description}}</td>
+                <td>
+                  <img *ngIf="pdr.image" [src]="'http://localhost:8000/storage/' + pdr.image" alt="Product Image" style="width: 90px; height: 60px;">
+
+            </td>
+                <td>
+                    <button class="bt1" (click)="updateForm(pdr)"><img src="..\..\..\..\assets\icons\Frame 52787.svg" alt="metronic"></button>
+                    <button class="bt2" (click)="delete(pdr)"><img src="..\..\..\..\assets\icons\🦆 icon _trash_.svg" alt="metronic"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+        <pagination-controls previousLabel="" nextLabel="" (pageChange)="pages = $event"></pagination-controls>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p class="pI" *ngIf="!showText">Ajouter un nouveau produit</p>
+                    <p class="pI" *ngIf="showText">Modifier Le produit</p>
+                    <form [formGroup]="profForm" (submit)="submitForm()">
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Nom</label>
+                        <input type="text" class="form-control" formControlName="name">
+                        <span
+                        *ngIf="profForm.controls['name'].invalid && (profForm.controls['name'].dirty || profForm.controls['name'].touched)">
+                        <span class="text-danger" *ngIf="profForm.controls?.['name']?.errors?.['required']">required
+                        </span>
+                        </span>
+                      </div>
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Prix</label>
+                        <input type="number" class="form-control" formControlName="prix" >
+                        <span
+                        *ngIf="profForm.controls['prix'].invalid && (profForm.controls['prix'].dirty || profForm.controls['prix'].touched)">
+                        <span class="text-danger" *ngIf="profForm.controls?.['prix']?.errors?.['required']">required</span>
+                        
+                        
+                      </span>
+                      </div>
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Catégorie : </label>
+                        <input type="text" class="form-control" formControlName="category">
+                        <span
+                        *ngIf="profForm.controls['category'].invalid && (profForm.controls['category'].dirty || profForm.controls['category'].touched)">
+                        <span class="text-danger" *ngIf="profForm.controls?.['category']?.errors?.['required']">required
+                
+                        </span>
+                      </span>
+                      </div>
+                      <div class="mb-3">
+                        <label for="" class="form-label">Description</label>
+                        <input type="text" class="form-control" formControlName="description">
+                        <span
+                        *ngIf="profForm.controls['description'].invalid && (profForm.controls['description'].dirty || profForm.controls['description'].touched)">
+                        <span class="text-danger" *ngIf="profForm.controls?.['description']?.errors?.['required']">required</span>
+                
+                      </span>
+                      </div>
+                      <div class="mb-3">
+                        <label for="" class="form-label">Image</label>
+                        <!-- <input type="file" class="form-control" formControlName="path_img"> -->
+                        <input type="file" class="form-control" (change)="onFileSelect($event)" accept="image/*">
+                        
+                      </div>
+                      <button type="submit" class="btn btn-primary btnI" *ngIf="!showButton" [disabled]="profForm.invalid">Ajouter</button>
+                      <button type="submit" class="btn btn-primary btnI" *ngIf="showButton" [disabled]="profForm.invalid"> Modifer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
+  
+

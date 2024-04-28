@@ -1,0 +1,57 @@
+.login{
+    background-color: white;
+    position: absolute;
+    padding: 10px;
+    top:7% ;
+    border-radius: 10px;
+    width: 70%;
+    height: 500px;
+    display: block;
+    margin-left: 15%;
+    margin-right: auto;
+    box-shadow: 
+    3px 3px 5px 0px rgba(0, 0, 0, 0.082),
+    -3px -3px 5px 0px rgba(0, 0, 0, 0.076);
+    display: flex;
+}
+.forms{
+    width:  300px;
+    height: 250px;
+    vertical-align: top;
+    justify-content: space-around;
+    align-items: center;
+    margin:90px 10px 10px 10px;
+}
+.img{
+    justify-content: center;
+    align-items: center;
+    width:  500px;
+    height: 250px;
+    margin: 90px 10px 10px 10px;
+}
+
+.btn{
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px 0px 0px;
+    font-size: 14px;
+    width: 100px;
+    color:#750dec;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    color: white;
+}
+
+img{
+    width: 400px;
+}
+
+.form-group{
+    margin: 20px 0px;
+}
+
+.signup{
+    margin-left :40%;
+    text-decoration: none;
+}

@@ -1,0 +1,100 @@
+.parent {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fff;
+  }
+  
+  .main {
+    display: flex;
+    flex-grow: 1;
+    background-color: #fff;
+  }
+  
+  .content {
+    flex-grow: 1;
+    display: flex;
+  
+    margin: 0% 1% 1% 1%;
+    padding: 20px;
+    color: #282c35;
+  
+    background-color: #fff;
+    border-radius: 10px;
+  }
+  
+  /* --------- Non-flexbox related styles --------- */
+  .aside{
+    z-index: 1;
+  }
+  .child {
+    /* //z-index: 1; */
+    margin: 0% 1% 1% 1%;
+    padding: 20px 00px;
+    box-shadow: 0px 0px 44px 0px rgba(0, 0, 0, 0.10);
+    /* // background-color: #fff; */
+    background-color: rgba(53, 42, 172, 0.773);
+    
+    border-radius: 10px;
+  
+    width: 250px;
+  
+  }
+  .show{
+    animation:  slideIn  0.7s ease;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+    .footer {
+      display: flex;
+      align-items: center;
+      margin: 0% 1% 1% 1%;
+      /* //padding: 20px; */
+      height: 50px;
+     
+      background-color: #d4d3d357;
+      border-radius: 10px;
+      /* //border: 2px solid #f5cc8b; */
+     
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* This will distribute the space between the child elements */
+      margin: 1%;
+      box-shadow: 0px 0px 44px 0px rgba(0, 0, 0, 0.10);
+      height: 60x;
+     /* // color: #ffe8c3; */
+      background-color: #FFF;
+      border-radius: 10px;
+    }
+    .header_content{
+      width: 100%;
+    }
+    .footer_content{
+      width: 100%;
+    }
+    .content_content{
+      width: 100%;
+    }
+    /* Assuming app-header is a block-level element, you can set it to take full width */
+    .app-header {
+      width: 100%;
+    }
+    
+    /* If app-header has padding, you may need to adjust the box-sizing property */
+    .app-header {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+
+
+    
