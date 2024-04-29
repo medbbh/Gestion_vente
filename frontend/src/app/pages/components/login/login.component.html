@@ -1,0 +1,35 @@
+<div class="login">
+    <div class="img">
+        <img  src="../../../../assets/images/signin.jpg" alt="" />
+    </div>
+    <div class="forms">
+        <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <h3 class="h3 mb-3 font-weight-normal text-center">Sign in</h3>
+            <!-- Errors -->
+            
+            <div *ngIf="errors?.error" class="alert alert-danger mt-3">
+                {{ errors?.error }}
+            </div>
+            <!-- Login -->
+            <div class="form-group">
+                <label>Email address</label>
+                <input type="email" class="form-control" formControlName="email">
+                <span *ngIf="errors?.email" class="alert alert-danger mt-3">
+                    {{ errors?.email }}
+                </span>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <span *ngIf="errors?.password" class="alert alert-danger mt-3">
+                    {{ errors?.password }}
+                </span>
+            </div>
+            <button type="submit"class="btn btn-block btn-primary">Log in</button>
+            
+            <a class="signup" routerLink="/register">sign up</a>
+            
+        </form>
+    </div>
+    
+  </div>

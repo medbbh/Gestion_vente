@@ -1,0 +1,46 @@
+.image{
+    width: 100px ;
+   /* // height: 100px; */
+}
+.image_user{
+  
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+  
+}
+.title_user {
+    color: #2f2f2f;
+    position: absolute;
+  
+    text-align: center;
+  
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    
+  }
+  .sous_title {
+  color: #0E428D;
+  ;
+    /* // color: #7f879c; */
+    position: absolute;
+  
+    text-align: center;
+  
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+  .nav-link {
+    color: #2f2f2f;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Outfit',sans-serif;
+  }
+
+  .btn{
+    width: 200px;
+  }

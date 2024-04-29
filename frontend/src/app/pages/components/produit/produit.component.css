@@ -1,0 +1,223 @@
+.tit{
+    /* margin: 20px 0px 20px 0px; */
+    font-size:1.5rem;
+    color: black;
+    
+}
+
+.table-responsive {
+    thead {
+      height: 7px !important;
+      margin-bottom: 10px !important;
+
+
+      th {
+        justify-content: center;
+        height: 20px;
+        background-color: #fff;
+        color: #8B909A;
+
+        font-family: 'Outfit',sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+       
+      }
+    }
+
+    tbody {
+      tr {
+        height: 20px !important;
+        align-items: center;
+        background-color: #fff;
+        color: #212529;
+
+        td {
+          vertical-align: middle;
+        }
+      }
+    }
+
+   
+  }
+
+.Tstyle{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.bt1{
+    background-color: #fff;
+    margin: 0px 1px 0px 0px;
+    border: none;
+}
+.bt2{
+    background-color: #fff;
+    margin: 0px 0px 0px 1px;
+    border: none;
+}
+
+.bd{
+  top: 20%;
+  height: 100vh;
+}
+
+/* .pagination{
+  margin-left: 800px;
+}
+.pagination  li a{
+  color: #8b909aaf;
+  background-color: #F1F2F6;
+  border-radius: 5px;
+}
+.page-link{
+  border-radius: 5px;
+  margin: 0px 1.5px 0px 1.5px;
+}
+.page-item{
+  margin: 0px 1.5px 0px 1.5px;
+} */
+.containerBD{
+    margin: 1px 30px 30px 30px;
+}
+.ls{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: -2px;
+}
+.modal-dialog{
+    top: 8%;
+    width: 430px;
+    height: 430px;
+}
+.modal-content{
+    border-radius: 20px;
+}
+.modal-body{
+    padding: 40px;
+    border-radius: 20px;
+}
+.btn{
+    height: 38px;
+    width: 190px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+    /* margin-top: 15px; */
+}
+.form-control{
+    border-radius: 20px;
+    width: 340px;
+    border: 2px solid #0E5CAA;
+}
+.pI{
+    color: #0E5CAA;
+    text-align: center;
+}
+.btnI{
+    border-radius: 20px;
+    width: 90px;
+    height: 38px;
+    background-color: #0052B4;
+    margin-left: 250px;
+}
+label{
+    color: #0E5CAA;
+    margin-bottom: 8px;
+}
+
+.pagination{
+  right: 6%;
+  position: absolute;
+}
+
+
+::ng-deep .ngx-pagination{
+  /* background-color: #0E5CAA; */
+  
+}
+::ng-deep .ngx-pagination a{
+  border-radius: 5px !important;
+  margin: 0px 3px 0px 3px;
+  color: #8b909aaf;
+  /* background-color: #F1F2F6; */
+  cursor: pointer !important;
+  width: 28px  !important;
+  
+}
+::ng-deep .ngx-pagination a:hover {
+  background-color: transparent !important;
+}
+::ng-deep .ngx-pagination .current {
+  color: #8b909aaf;
+  background-color: #f1f1f6;
+  border-radius: 5px;
+  cursor: pointer !important;
+}
+
+
+/* ::ng-deep .ngx-pagination  .pagination-next{
+  background-color: none;
+  
+}
+
+::ng-deep .ngx-pagination  .pagination-previous{
+  background-color: none;
+} */
+
+::ng-deep .ngx-pagination .pagination-previous a:before, .ngx-pagination .pagination-previous.disabled:before {
+  content: "<" !important;
+  background-color: #f1f1f6;
+  width: 28px !important;
+  height:  30px !important;
+  line-height: 28px !important;
+  border-radius: 5px  !important;
+  text-align: center;
+  
+  
+}
+
+::ng-deep .ngx-pagination .pagination-next a:after, .ngx-pagination .pagination-next.disabled:after {
+  content: ">" !important;
+  background-color: #f1f1f6;
+  width: 28px !important;
+  height:  30px !important;
+  line-height: 28px !important;
+  border-radius: 5px  !important;
+  text-align: center;
+  
+}
+     
+::ng-deep  li.pagination-previous.disabled:before {
+  content: "<" !important;
+  background-color: #f1f1f6;
+  width: 28px !important;
+  height:  30px !important;
+  line-height: 28px !important;
+  border-radius: 5px  !important;
+  text-align: center;
+  
+}
+::ng-deep  li.pagination-next.disabled:after {
+  content: ">" !important;
+  background-color: #f1f1f6;
+  width: 28px !important;
+  height:  30px !important;
+  line-height: 28px !important;
+  border-radius: 5px  !important;
+  text-align: center;
+  
+}
+
+.image_user{
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  margin-right: 6px;
+}
