@@ -8,7 +8,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::select('id','username', 'adresse', 'tel', 'email', 'role')->get();
+        $users = User::select('id','name', 'adress', 'phone', 'email', 'role')->get();
         return response()->json($users,200);
      }
  
