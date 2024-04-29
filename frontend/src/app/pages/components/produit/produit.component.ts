@@ -20,8 +20,7 @@ export class ProduitComponent {
   selectedProduit: Produit | null = null;
   showButton:boolean = false
   selectedFile: File | null = null;
- 
-  
+   
 
   constructor(private fb: FormBuilder, private produitService: ServiceService,private router:Router,private activatedRoute: ActivatedRoute,) {}
 
@@ -29,6 +28,7 @@ export class ProduitComponent {
     this.fetchProduits();
     this.initializeForm();
   }
+  
 
   fetchProduits() {
     this.produitService.listProduit().subscribe((response: HttpResponse<Produit[]>) => {

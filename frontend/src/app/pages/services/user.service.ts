@@ -15,10 +15,10 @@ export class UserService {
  }
 
   getUsers(){
-    return this.httpClient.get(environment.api + '/users');
+    return this.httpClient.get(environment.api + '/auth/users');
   }
 
   roleUpdate(id:any){
-    return this.httpClient.put(environment.api +'/user/roleUpdate/'+id,this.httpOptions)
+    return this.httpClient.put(environment.api +'/auth/user/roleUpdate/'+id,this.httpOptions)
   }
 }

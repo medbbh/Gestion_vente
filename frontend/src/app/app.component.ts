@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthStateService } from './pages/services/auth-state.service';
 import { Router } from '@angular/router';
 import { TokenService } from './pages/services/token.service';
-
+import { initFlowbite } from 'flowbite';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     public token: TokenService
   ) {}
   ngOnInit() {
+    initFlowbite();
     this.auth.userAuthState.subscribe((val) => {
       this.isSignedIn = val;
     });

@@ -33,19 +33,22 @@
                 {{i + 1}}
               </th>
               <td class="px-6 py-4">
-                  {{user.username}}
+                  {{user.name}}
               </td>
               <td class="px-6 py-4">
                 {{user.email}}
               </td>
               <td class="px-6 py-4">
-                {{user.tel}}
+                {{user.phone}}
               </td>
               <td class="px-6 py-4">
-                {{user.adresse}}
+                {{user.adress}}
               </td>
-              <td class="px-6 py-4">
-                {{user.role}}
+              <td class="px-6 py-4" *ngIf="user.role == 0">
+                Client
+              </td>
+              <td class="px-6 py-4" *ngIf="user.role == 1">
+                Admin
               </td>
               <td class="px-6 py-4">
                 <button type="button" *ngIf="user.role == 0" (click)="roleUpdate(user.id)" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-full text-sm sm:text-xs px-5 py-2.5 text-center me-2 mb-2 ">Nommer admin</button>
@@ -57,3 +60,4 @@
       </tbody>
   </table>
 </div>
+
