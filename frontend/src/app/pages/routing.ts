@@ -2,6 +2,8 @@ import { Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
 import { ProduitComponent } from "./components/produit/produit.component";
 import { UserComponent } from "./components/user/user.component";
+import { StockComponent } from "./components/stock/stock.component";
+
 
 const Routing: Routes = [
 
@@ -19,6 +21,10 @@ const Routing: Routes = [
       {
         path:'user', component:UserComponent
       },
+      {
+        path:'stock', component:StockComponent
+      },
+     
 
     {
         path: '**',

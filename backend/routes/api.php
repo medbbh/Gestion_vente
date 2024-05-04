@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StockController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,6 +24,8 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);  
     
+    Route::apiResource('products', ProductController::class);
+    Route::apiResource('stocks', StockController::class);
     Route::get('users', [UserController::class, 'index']);
     Route::put('/user/roleUpdate/{id}', [UserController::class, 'RoleUpdate']);
     

@@ -13,6 +13,7 @@ import { AuthInterceptor } from './pages/services/auth.interceptor';
 import { HomeComponent } from './pages/components/home/home.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProduitComponent } from './pages/components/produit/produit.component';
+import { StockComponent } from './pages/components/stock/stock.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProduitComponent } from './pages/components/produit/produit.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProduitComponent
+    ProduitComponent,
+    StockComponent
   ],
   imports: [
     BrowserModule,

@@ -43,7 +43,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-
+ 
         $validatedData = $request->validate([
             'name' => 'required|string',
             'prix' => 'required|numeric',
