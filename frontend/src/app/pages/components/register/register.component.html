@@ -1,9 +1,9 @@
-<div class="login">
+<!-- <div class="login">
   <div class="forms">
     <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <h3 class="h3 mb-3 font-weight-normal text-center">Register User</h3>
+      <h3 class="h3 mb-3 font-weight-normal text-center">Register User</h3> -->
       <!-- Errors -->
-      <div *ngIf="errors?.name" class="alert alert-danger mt-3">
+      <!-- <div *ngIf="errors?.name" class="alert alert-danger mt-3">
         {{ errors?.name }}
       </div>
       <div *ngIf="errors?.adress" class="alert alert-danger mt-3">
@@ -20,9 +20,9 @@
       </div>
       <div *ngIf="errors?.password_confirmation" class="alert alert-danger mt-3">
         {{ errors?.password_confirmation }}
-      </div>
+      </div> -->
       <!-- Signup form -->
-      <div class="d2">
+      <!-- <div class="d2">
         <div class="form-group">
           <label>Name</label>
           <input type="text" class="form-control" formControlName="name" />
@@ -66,5 +66,74 @@
   </div>
   
 
-</div>
+</div> -->
     
+
+
+<!-- new register -->
+
+<div class="bg-white absolute p-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-[0_3px_10px_rgb(0,0,0,0.3)] lg:py-60 rounded-lg w-full lg:w-3/4 h-auto lg:h-96 flex mx-auto">
+  <div class="w-3/5 flex flex-col justify-center">
+    <form class="w-3/4 mx-auto" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <h3 class="text-center mb-3 text-xl font-medium">Register</h3>
+      <!-- Errors -->
+      <div *ngIf="errors?.name" class="text-red-600 mt-3">
+        {{ errors?.name }}
+      </div>
+      <div *ngIf="errors?.adress" class="text-red-600 mt-3">
+        {{ errors?.adresse }}
+      </div>
+      <div *ngIf="errors?.phone" class="text-red-600 mt-3">
+        {{ errors?.tel }}
+      </div>
+      <div *ngIf="errors?.email" class="text-red-600 mt-3">
+        {{ errors?.email }}
+      </div>
+      <div *ngIf="errors?.password" class="text-red-600 mt-3">
+        {{ errors?.password }}
+      </div>
+      <div *ngIf="errors?.password_confirmation" class="text-red-600 mt-3">
+        {{ errors?.password_confirmation }}
+      </div>
+      <!-- Signup form -->
+      <div class="flex justify-between mb-4 gap-3">
+        <div class="w-1/2">
+          <label class="block">Nom</label>
+          <input type="text" class="form-control block w-full border border-gray-300 rounded px-3 py-2 mt-1" formControlName="name" />
+        </div>
+        <div class="w-1/2 ml-2">
+          <label class="block">Adresse</label>
+          <input type="text" class="form-control block w-full border border-gray-300 rounded px-3 py-2 mt-1" formControlName="adress" />
+        </div>
+      </div>
+      <div class="flex justify-between mb-4 gap-3">
+        <div class="w-1/2">
+          <label class="block">Tel</label>
+          <input type="number" class="form-control block w-full border border-gray-300 rounded px-3 py-2 mt-1" formControlName="phone" />
+        </div>
+        <div class="w-1/2 ml-2">
+          <label class="block">Email
+          </label>
+          <input type="email" class="form-control block w-full border border-gray-300 rounded px-3 py-2 mt-1" formControlName="email" />
+        </div>
+      </div>
+      <div class="flex justify-between mb-4 gap-3">
+        <div class="w-1/2">
+          <label class="block">Mot de passe</label>
+          <input type="password" class="form-control block w-full border border-gray-300 rounded px-3 py-2 mt-1" formControlName="password" />
+        </div>
+        <div class="w-1/2 ml-2">
+          <label class="block">Confirmez le mot de passe</label>
+          <input type="password" class="form-control block w-full border border-gray-300 rounded px-3 py-2 mt-1" formControlName="password_confirmation" />
+        </div>
+      </div>
+      <div class="justify-between flex text-start mt-10">
+        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit">Register</button>
+        <a class="block text-center mt-2 text-blue-400 hover:underline" routerLink="/login">Log in</a>
+    </div>
+    </form>
+  </div>
+  <div class="w-2/5 flex justify-center items-center">
+    <img src="../../../../assets/images/signup.jpg" alt="" class="w-400" />
+  </div>
+</div>

@@ -5,25 +5,25 @@ import { UserComponent } from "./components/user/user.component";
 
 const Routing: Routes = [
 
-    {
-      path:'',
-      component:HomeComponent
-    },
-    {
-        path:'home',
-        component:HomeComponent
-      },
-      {
-        path:'produit', component:ProduitComponent
-      },
-      {
-        path:'user', component:UserComponent
-      },
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'produit', component: ProduitComponent
+  },
+  {
+    path: 'user', component: UserComponent
+  },
 
-    {
-        path: '**',
-        redirectTo: 'error/404',
-    },
+  {
+    path: '**',
+    redirectTo: 'error/404',
+  },
 
 ]
 

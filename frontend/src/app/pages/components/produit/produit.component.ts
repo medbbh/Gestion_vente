@@ -6,6 +6,8 @@ import { ServiceService } from '../../services/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Produit } from '../../interfaces/produit';
 import Swal from 'sweetalert2';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-produit',
@@ -13,6 +15,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./produit.component.css']
 })
 export class ProduitComponent {
+
+  // font awesome icons 
+  faTrash= faTrash;
+  faEdit= faEdit;
+
+
+
   pages: number = 1;
   profForm!: FormGroup;
   produits: Produit[] = [];
@@ -147,25 +156,26 @@ addProduits(formData: FormData) {
 
   delete(id: Produit){
     Swal.fire({
-    title: "Delete Produit? ",
-    text: "Confirming will permanently delete the selected file and all associated data . This action cannot be undone.",
+    title: "Supprimer le produit? ",
+    text: "Êtes-vous sûr de vouloir supprimer ce produit ?",
     
     showDenyButton: true,
     // showCancelButton: true,
-    confirmButtonText: "Save",
-    denyButtonText: `Delete`,
+    denyButtonText: `Supprimer`,
+    confirmButtonText: "Annuler",
+
     
     
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      Swal.fire("Saved!", "The Produit is not delete", "success");
+      // Swal.fire("Saved!", "The Produit is not delete", "success");
     } else if (result.isDenied) {
       this.produitService.delete(id).subscribe(()=>{
         // console.log(res);
         location.reload();
       });
-      Swal.fire("The Produit is delete");
+      Swal.fire("Produit supprimé !");
       
     }
   });

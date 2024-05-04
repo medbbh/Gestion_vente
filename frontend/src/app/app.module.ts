@@ -13,6 +13,8 @@ import { AuthInterceptor } from './pages/services/auth.interceptor';
 import { HomeComponent } from './pages/components/home/home.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProduitComponent } from './pages/components/produit/produit.component';
+import { IndexClientComponent } from './pages/components/index-client/index-client.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ProduitComponent } from './pages/components/produit/produit.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProduitComponent
+    ProduitComponent,
+    IndexClientComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { ProduitComponent } from './pages/components/produit/produit.component';
     HttpClientModule,
     RouterLink,
     RouterLinkActive,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FontAwesomeModule
   ],
   providers: [
     {

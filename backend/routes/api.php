@@ -21,8 +21,14 @@ Route::group([
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
+<<<<<<< HEAD
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
+=======
+    Route::post('/refresh', [AuthController::class, 'refresh']);  
+
+    Route::apiResource('products',ProductController::class);
+>>>>>>> 676a1d85de98e64bc203663cf87939ac427decca
     
     Route::get('users', [UserController::class, 'index']);
     Route::put('/user/roleUpdate/{id}', [UserController::class, 'RoleUpdate']);
