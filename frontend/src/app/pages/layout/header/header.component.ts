@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { AuthService, User } from '../../services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,7 +10,12 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   titre='Gestion de vente enlige'
  
-constructor(private router :Router) {}
+  UserProfile!: User;
+  constructor(public authService: AuthService,private router :Router) {
+    this.authService.profileUser().subscribe((data: any) => {
+      this.UserProfile = data;
+    });
+  }
 
 goToHome() {
     this.router.navigate(['']);

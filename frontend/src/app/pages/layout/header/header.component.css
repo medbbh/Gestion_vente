@@ -35,8 +35,9 @@
     margin-top: 20px;
   }
   .nav-link {
+    margin-top: 5px;
     color: #2f2f2f;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 600;
     font-family: 'Outfit',sans-serif;
   }
