@@ -1,17 +1,17 @@
-<div class="login">
+<!-- <div class="login">
     <div class="img">
         <img  src="../../../../assets/images/signin.jpg" alt="" />
     </div>
     <div class="forms">
         <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <h3 class="h3 mb-3 font-weight-normal text-center">Sign in</h3>
-            <!-- Errors -->
-            
-            <div *ngIf="errors?.error" class="alert alert-danger mt-3">
+            <h3 class="h3 mb-3 font-weight-normal text-center">Sign in</h3> -->
+<!-- Errors -->
+
+<!-- <div *ngIf="errors?.error" class="alert alert-danger mt-3">
                 {{ errors?.error }}
-            </div>
-            <!-- Login -->
-            <div class="form-group">
+            </div> -->
+<!-- Login -->
+<!-- <div class="form-group">
                 <label>Email address</label>
                 <input type="email" class="form-control" formControlName="email">
                 <span *ngIf="errors?.email" class="alert alert-danger mt-3">
@@ -32,4 +32,47 @@
         </form>
     </div>
     
-  </div>
+  </div> -->
+
+<!-- new login form -->
+<div
+    class="bg-white absolute p-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-[0_3px_10px_rgb(0,0,0,0.3)] lg:py-60 rounded-lg w-full lg:w-3/4 h-auto lg:h-96 flex mx-auto">
+    <div class="w-full lg:w-1/2 flex justify-center items-center">
+        <img src="../../../../assets/images/signin.jpg" alt="" class="w-3/4">
+    </div>
+    <div class="w-full lg:w-1/2 flex flex-col justify-center items-center">
+        <form class="w-3/4 mx-autor" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <p class="lg:text-2xl mb-3 font-semibold text-center">Sign in</p>
+            <!-- Errors -->
+            <div *ngIf="errors?.error" class="text-red-600 mt-3">
+                {{ errors?.error }}
+            </div>
+            <!-- Login -->
+
+            <div class="form-group mb-5">
+                <label class="block">Email
+                </label>
+                <input type="email" class="form-control block w-full border border-gray-300 rounded px-3 py-2 mt-1"
+                    formControlName="email">
+                <span *ngIf="errors?.email" class="text-red-600 mt-3">
+                    {{ errors?.email }}
+                </span>
+            </div>
+            <div class="form-group mb-5">
+                <label class="block">Mot de passe</label>
+                <input type="password" class="form-control block w-full border border-gray-300 rounded px-3 py-2 mt-1"
+                    formControlName="password">
+                <span *ngIf="errors?.password" class="text-red-600 mt-3">
+                    {{ errors?.password }}
+                </span>
+            </div>
+            <div class="justify-between flex text-start mt-10">
+                <button
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    type="submit">Log in</button>
+                <a class="block text-center mt-2 text-blue-400 hover:underline" routerLink="/register">Register</a>
+            </div>
+
+        </form>
+    </div>
+</div>
