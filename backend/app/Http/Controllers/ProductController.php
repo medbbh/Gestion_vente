@@ -70,7 +70,6 @@ class ProductController extends Controller
         return response()->json($product, 200);
     }
 
-
     public function destroy($id)
     {
         $product = Product::findOrFail($id);

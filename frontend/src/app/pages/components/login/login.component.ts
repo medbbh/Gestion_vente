@@ -25,11 +25,13 @@ export class LoginComponent implements OnInit {
       password: [],
     });
   }
-  ngOnInit() {}
+  ngOnInit(    
+  ) {}
   onSubmit() {
     this.authService.signin(this.loginForm.value).subscribe(
       (result) => {
         this.responseHandler(result);
+
       },
       (error) => {
         this.errors = error.error;
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
   // Handle response
   responseHandler(data:any) {
     this.token.handleData(data.access_token);
+    localStorage.setItem("role",data.user.role)
   }
 
 }
