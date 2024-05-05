@@ -51,12 +51,12 @@
 
 .bt1{
     background-color: #fff;
-    margin: 0px 1px 0px 0px;
+    margin: 0px 4px 0px 20px;
     border: none;
 }
 .bt2{
     background-color: #fff;
-    margin: 0px 0px 0px 1px;
+    margin: 0px 0px 0px 4px;
     border: none;
 }
 
@@ -110,9 +110,9 @@
     /* margin-top: 15px; */
 }
 .form-control{
-    border-radius: 20px;
-    width: 340px;
-    border: 2px solid #0E5CAA;
+    border-radius: 9px;
+    width: 375px;
+    border: 1px solid #dce3eb;
 }
 .pI{
     color: #0E5CAA;
