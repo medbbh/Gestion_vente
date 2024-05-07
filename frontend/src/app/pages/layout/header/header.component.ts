@@ -18,7 +18,9 @@ export class HeaderComponent {
   }
 
 goToHome() {
+    localStorage.clear()
     this.router.navigate(['']);
+
 }
 
 

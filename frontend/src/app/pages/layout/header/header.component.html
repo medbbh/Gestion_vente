@@ -1,15 +1,27 @@
-<nav class="p-2 ">
+<!--<nav class="p-2 ">
     <div class="flex justify-between">
-       <!-- <h3 class="nav-link">{{titre}}</h3> -->
-       <p class="nav-link">Bienvenue <strong>{{UserProfile?.name}}</strong></p>
+       
+       <p class="nav-link">Bienvenue <strong>{{UserProfile.name}}</strong></p>
   
         <div class="flex justify-between" role="search">
             
           <input class="rounded-lg me-2" type="search" placeholder="Search" aria-label="Search">
-          <!-- Data Binding - prperty binding -->
           <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="goToHome()">Log out</button>
         </div>
       </div>
     
-  </nav>
+  </nav> -->
+
+<nav class="p-4">
+    <div class="flex justify-between items-center">
+       <!-- <h3 class="nav-link">{{titre}}</h3> -->
+       <h1 class="lg:text-4xl md:text-4xl sm:text-lg font-semibold">Bienvenue <strong>{{UserProfile.name}}</strong></h1>
   
+        <div class="flex items-center space-x-4 md:space-x-8">
+            <!-- Search Bar -->
+            <input class="rounded-lg" type="search" placeholder="chercher">
+            <!-- Logout Button -->
+            <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="goToHome()">Log out</button>
+        </div>
+    </div>
+</nav>

@@ -1,4 +1,4 @@
-<div class="parent">
+<!-- <div class="parent">
     <div class="header">
       <div class="header_content">
         <app-header></app-header>
@@ -22,4 +22,22 @@
   
       </div>
     </div>
+  </div> -->
+
+<div class="flex flex-col h-screen bg-gray-100">
+  <div class="flex items-center justify-between shadow-md rounded-lg mx-4 my-2 bg-white">
+    <app-header class="w-full"></app-header>
   </div>
+  <div class="flex-grow flex my-4 me-6">
+    <div class="child p-4 rounded-lg shadow-md w-64 h-full bg-purple-500">
+      <aside>
+        <app-side-bar></app-side-bar>
+      </aside>
+    </div>
+    <div class="flex-grow flex p-4 h-full rounded-lg shadow-md bg-white">
+      <div class="w-full">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

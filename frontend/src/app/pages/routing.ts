@@ -9,10 +9,10 @@ import { ClienGuard } from "./client.guard";
 
 const Routing: Routes = [
 
-  {
-    path: '', component: HomeComponent
+  // {
+  //   path: '', component: HomeComponent
 
-  },
+  // },
   {
     path: 'admin-home', component: HomeComponent,canActivate: [AuthGuard, AdminGuard]
 
