@@ -2,18 +2,11 @@
     <div class="flex justify-between">
     <h1 class="mb-4 text-4xl font-extrabold tracking-tight text-black md:text-5xl lg:text-4xl sm:text-4xl">Les Produits
     </h1>
-<<<<<<< HEAD
     <button id="modify" data-modal-target="add-product-modal" data-modal-toggle="add-product-modal" class="block mb-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
         Ajouter un produit
     </button>
     </div>
-=======
-    <button data-modal-target="add-product-modal" data-modal-toggle="add-product-modal"
-        class="block mb-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        type="button">
-        Ajouter un produit
-    </button>
->>>>>>> 676a1d85de98e64bc203663cf87939ac427decca
+
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -56,7 +49,6 @@
                 </td>
                 <td>
                     <button
-<<<<<<< HEAD
                         class="bt1"
                         (click)="updateForm(pdr)"><img src="..\..\..\..\assets\icons\Frame 52787.svg"
                             alt="metronic"></button>
@@ -64,13 +56,7 @@
                         class="bt2"
                         (click)="delete(pdr)"><img src="..\..\..\..\assets\icons\🦆 icon _trash_.svg"
                             alt="metronic"></button>
-=======
-                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-full text-sm sm:text-xs px-5 py-2.5 text-center me-2 mb-2 "
-                        (click)="updateForm(pdr)"><fa-icon [icon]="faEdit"></fa-icon></button>
-                    <button
-                        class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-full text-sm sm:text-xs px-5 py-2.5 text-center me-2 mb-2 "
-                        (click)="delete(pdr)"><fa-icon [icon]="faTrash"></fa-icon></button>
->>>>>>> 676a1d85de98e64bc203663cf87939ac427decca
+
                 </td>
             </tr>
         </tbody>
@@ -81,7 +67,6 @@
 </div>
 
 <!-- Modal toggle -->
-<<<<<<< HEAD
   <!-- Main modal -->
   <div id="add-product-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative p-4 w-full max-w-md max-h-full">
@@ -108,7 +93,7 @@
                       <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" formControlName="name">
                       <span
                       *ngIf="profForm.controls['name'].invalid && (profForm.controls['name'].dirty || profForm.controls['name'].touched)">
-                      <span class="text-danger" *ngIf="profForm.controls?.['name']?.errors?.['required']">required
+                      <span class="text-red-600" *ngIf="profForm.controls?.['name']?.errors?.['required']">required
                       </span>
                       </span>
                     </div>
@@ -117,7 +102,7 @@
                       <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" formControlName="prix" >
                       <span
                       *ngIf="profForm.controls['prix'].invalid && (profForm.controls['prix'].dirty || profForm.controls['prix'].touched)">
-                      <span class="text-danger" *ngIf="profForm.controls?.['prix']?.errors?.['required']">required</span>
+                      <span class="text-red-600" *ngIf="profForm.controls?.['prix']?.errors?.['required']">required</span>
                       
                       
                     </span>
@@ -127,7 +112,7 @@
                       <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" formControlName="category">
                       <span
                       *ngIf="profForm.controls['category'].invalid && (profForm.controls['category'].dirty || profForm.controls['category'].touched)">
-                      <span class="text-danger" *ngIf="profForm.controls?.['category']?.errors?.['required']">required
+                      <span class="text-red-600" *ngIf="profForm.controls?.['category']?.errors?.['required']">required
               
                       </span>
                     </span>
@@ -137,7 +122,7 @@
                         <textarea name="description" formControlName="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" ></textarea>
                       <span
                       *ngIf="profForm.controls['description'].invalid && (profForm.controls['description'].dirty || profForm.controls['description'].touched)">
-                      <span class="text-danger" *ngIf="profForm.controls?.['description']?.errors?.['required']">required</span>
+                      <span class="text-red-600" *ngIf="profForm.controls?.['description']?.errors?.['required']">required</span>
               
                     </span>
                     </div>
@@ -155,207 +140,4 @@
           </div>
       </div>
   </div> 
-  
-=======
-<!-- Main modal -->
-<div id="add-product-modal" tabindex="-1" aria-hidden="true"
-    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-md max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <!-- Modal header -->
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Ajouter un nouveau produit
-                </h3>
-                <button type="button"
-                    class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="add-product-modal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
-            <!-- Modal body -->
-            <div class="p-4 md:p-5">
-                <form class="space-y-4" [formGroup]="profForm" (submit)="submitForm()">
-                    <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom
-                            Produit</label>
-                        <input type="text" formControlName="name" id="name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-                        <span
-                            *ngIf="profForm.controls['name'].invalid && (profForm.controls['name'].dirty || profForm.controls['name'].touched)">
-                            <span class="text-danger" *ngIf="profForm.controls?.['name']?.errors?.['required']">required
-                            </span>
-                        </span>
-                    </div>
-                    <div>
-                        <label for="prix"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prix</label>
-                        <input type="number" formControlName="prix" id="prix"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-                        <span
-                            *ngIf="profForm.controls['prix'].invalid && (profForm.controls['prix'].dirty || profForm.controls['prix'].touched)">
-                            <span class="text-danger"
-                                *ngIf="profForm.controls?.['prix']?.errors?.['required']">required</span>
-                        </span>
-                    </div>
-                    <div>
-                        <label for="categorie"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">categorie</label>
-                        <input type="text" formControlName="category" id="categorie"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-
-                        <span
-                            *ngIf="profForm.controls['category'].invalid && (profForm.controls['category'].dirty || profForm.controls['category'].touched)">
-                            <span class="text-danger"
-                                *ngIf="profForm.controls?.['category']?.errors?.['required']">required
-                            </span>
-                        </span>
-                    </div>
-                    <div>
-                        <label for="description"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                        <textarea formControlName="description" id="description"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required></textarea>
-                        <span
-                            *ngIf="profForm.controls['description'].invalid && (profForm.controls['description'].dirty || profForm.controls['description'].touched)">
-                            <span class="text-danger"
-                                *ngIf="profForm.controls?.['description']?.errors?.['required']">required</span>
-                        </span>
-                    </div>
-                    <div>
-
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            for="file_input">Upload file</label>
-                        <input
-                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            id="file_input" type="file" (change)="onFileSelect($event)" accept="image/*">
-
-
-                    </div>
-
-                    <button type="submit" *ngIf="!showButton" [disabled]="profForm.invalid"
-                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ajouter</button>
-                    <button type="submit" *ngIf="showButton" [disabled]="profForm.invalid"
-                        class="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Modifier</button>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
->>>>>>> 676a1d85de98e64bc203663cf87939ac427decca
-<!-- ############## -->
-
-<!-- <div class="containerBD">
-    <div class="ls">
-      <p class="tit">Liste Des  Produits</p>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="modify">Ajouter</button>
-    </div>
-    
-    <table class="table table-responsive">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prix</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>action</th>
-            </tr>
-        </thead>
-        <tbody> 
-            <tr *ngFor="let pdr of produits | paginate: { itemsPerPage: 5, currentPage: pages }">
-                <td>{{pdr.name}}</td>
-                <td>{{pdr.prix}}</td>
-                <td>{{pdr.category}}</td>
-                <td>{{pdr.description}}</td>
-                <td>
-                  <img *ngIf="pdr.image" [src]="'http://localhost:8000/storage/' + pdr.image" alt="Product Image" style="width: 90px; height: 60px;">
-
-                </td>
-                <td>
-                    <button class="bt1" (click)="updateForm(pdr)"><img src="..\..\..\..\assets\icons\Frame 52787.svg" alt="metronic"></button>
-                    <button class="bt2" (click)="delete(pdr)"><img src="..\..\..\..\assets\icons\🦆 icon _trash_.svg" alt="metronic"></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <div class="pagination">
-        <pagination-controls previousLabel="" nextLabel="" (pageChange)="pages = $event"></pagination-controls>
-    </div> -->
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <p class="pI" *ngIf="!showText">Ajouter un nouveau produit</p>
-                    <p class="pI" *ngIf="showText">Modifier Le produit</p>
-                    <form [formGroup]="profForm" (submit)="submitForm()">
-                      <div class="mb-3">
-                        <label for="name" class="form-label">Nom</label>
-                        <input type="text" class="form-control" formControlName="name">
-                        <span
-                        *ngIf="profForm.controls['name'].invalid && (profForm.controls['name'].dirty || profForm.controls['name'].touched)">
-                        <span class="text-danger" *ngIf="profForm.controls?.['name']?.errors?.['required']">required
-                        </span>
-                        </span>
-                      </div>
-                      <div class="mb-3">
-                        <label for="name" class="form-label">Prix</label>
-                        <input type="number" class="form-control" formControlName="prix" >
-                        <span
-                        *ngIf="profForm.controls['prix'].invalid && (profForm.controls['prix'].dirty || profForm.controls['prix'].touched)">
-                        <span class="text-danger" *ngIf="profForm.controls?.['prix']?.errors?.['required']">required</span>
-                        
-                        
-                      </span>
-                      </div>
-                      <div class="mb-3">
-                        <label for="name" class="form-label">Catégorie : </label>
-                        <input type="text" class="form-control" formControlName="category">
-                        <span
-                        *ngIf="profForm.controls['category'].invalid && (profForm.controls['category'].dirty || profForm.controls['category'].touched)">
-                        <span class="text-danger" *ngIf="profForm.controls?.['category']?.errors?.['required']">required
-                
-                        </span>
-                      </span>
-                      </div>
-                      <d iv class="mb-3">
-                        <label for="" class="form-label">Description</label>
-                        <input type="text" class="form-control" formControlName="description">
-                        <span
-                        *ngIf="profForm.controls['description'].invalid && (profForm.controls['description'].dirty || profForm.controls['description'].touched)">
-                        <span class="text-danger" *ngIf="profForm.controls?.['description']?.errors?.['required']">required</span>
-                
-                      </span>
-                      </div>
-                      <div class="mb-3">
-                        <label for="" class="form-label">Image</label> -->
-<!-- <input type="file" class="form-control" formControlName="path_img"> -->
-<!-- <input type="file" class="form-control" (change)="onFileSelect($event)" accept="image/*">
-                        
-                      </div>
-                      <button type="submit" class="btn btn-primary btnI" *ngIf="!showButton" [disabled]="profForm.invalid">Ajouter</button>
-                      <button type="submit" class="btn btn-primary btnI" *ngIf="showButton" [disabled]="profForm.invalid"> Modifer</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div> -->
+ 
