@@ -23,12 +23,11 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/profile', [AuthController::class, 'userProfile']);
     Route::post('/refresh', [AuthController::class, 'refresh']);  
-
     Route::apiResource('products',ProductController::class);
     Route::get('users', [UserController::class, 'index']);
     Route::put('/user/roleUpdate/{id}', [UserController::class, 'RoleUpdate']);
 
-    // Route::put('/products/{id}', [ProductController::class, 'update']);
+    
     
 });
 
