@@ -47,6 +47,7 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed|min:6',
             'role'=>'required|numeric',
         ]); 
+           
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }

@@ -26,10 +26,10 @@ const Routing: Routes = [
       },
      
 
-    {
-        path: '**',
-        redirectTo: 'error/404',
-    },
+  {
+    path: '**',
+    redirectTo: 'error/404',
+  },
 
 ]
 

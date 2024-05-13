@@ -14,6 +14,8 @@ import { HomeComponent } from './pages/components/home/home.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProduitComponent } from './pages/components/produit/produit.component';
 import { StockComponent } from './pages/components/stock/stock.component';
+import { IndexClientComponent } from './pages/components/index-client/index-client.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { StockComponent } from './pages/components/stock/stock.component';
     RegisterComponent,
     HomeComponent,
     ProduitComponent,
-    StockComponent
+    StockComponent,
+    IndexClientComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { StockComponent } from './pages/components/stock/stock.component';
     HttpClientModule,
     RouterLink,
     RouterLinkActive,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FontAwesomeModule
   ],
   providers: [
     {
