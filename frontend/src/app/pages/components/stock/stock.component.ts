@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class StockComponent {
   pages: number = 1;
-  profForm!: FormGroup;
+  stockForm!: FormGroup;
   stocks: Stock[] = [];
   showText: boolean = false;
   selectedStock:  Stock| null = null;
@@ -35,9 +35,10 @@ export class StockComponent {
   }
 
   initializeForm() {
-    this.profForm = this.fb.group({
-      produit_id: ['', Validators.required],
+    this.stockForm = this.fb.group({
+      product_id: ['', Validators.required],
       quantite: ['', Validators.required],
+      name :['',Validators.required],
     });
   }
   updateForm(stock: Stock) {
@@ -46,10 +47,11 @@ export class StockComponent {
   }
 
   updateFormValues(stock: Stock) {
-    this.profForm.patchValue({
+    this.stockForm.patchValue({
       id: stock.id,
-      produit_id:stock.product_id,
+      product_id:stock.product_id,
       quantite: stock.quantite,
+      
     });
     this.showText = true;
     let ref = document.getElementById('modify');
@@ -59,8 +61,8 @@ export class StockComponent {
 
   submitForm() {
     const formData = new FormData();
-    formData.append('product_id', this.profForm.get('product_id')?.value);
-    formData.append('quantite', this.profForm.get('quantite')?.value);
+    formData.append('product_id', this.stockForm.get('product_id')?.value);
+    formData.append('quantite', this.stockForm.get('quantite')?.value);
 
     if (this.selectedStock) {
         this.updateStock(formData);
@@ -68,7 +70,7 @@ export class StockComponent {
         this.addStock(formData);
     }
 
-}
+  }
 addStock(formData: FormData) {
   this.stockService.addStock(formData).subscribe(
       () => {
@@ -142,7 +144,7 @@ delete(id: Stock){
 
 clearForm() {
   this.selectedStock = null;
-  this.profForm.reset();
+  this.stockForm.reset();
   this.showText = false;
   this.showButton=false;
   location.reload();
