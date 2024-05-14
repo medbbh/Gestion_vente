@@ -5,6 +5,7 @@ import { Stock } from '../../interfaces/stocks';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-stock',
@@ -12,6 +13,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./stock.component.css']
 })
 export class StockComponent {
+  faTrash= faTrash;
+  faEdit= faEdit;
+
   pages: number = 1;
   stockForm!: FormGroup;
   stocks: Stock[] = [];
@@ -19,6 +23,7 @@ export class StockComponent {
   selectedStock:  Stock| null = null;
   showButton:boolean = false
   selectedFile: File | null = null;
+  isEditing: Stock | null = null;
 
   constructor(private fb: FormBuilder, private stockService: StockService,private router:Router,private activatedRoute: ActivatedRoute,) {}
 
@@ -64,11 +69,11 @@ export class StockComponent {
     formData.append('product_id', this.stockForm.get('product_id')?.value);
     formData.append('quantite', this.stockForm.get('quantite')?.value);
 
-    if (this.selectedStock) {
-        this.updateStock(formData);
-    } else {
-        this.addStock(formData);
-    }
+    if (this.isEditing ) {
+      this.updateStock(this.isEditing.id, formData);
+  } else {
+      this.addStock(formData);
+  }
 
   }
 addStock(formData: FormData) {
@@ -92,28 +97,24 @@ addStock(formData: FormData) {
       }
     );
   }
-  updateStock(formData: FormData) {
-    if (this.selectedStock) {
-      this.stockService.updateStock(this.selectedStock.id, formData).subscribe(
-        () => {
-          Swal.fire({
-            title: 'Success',
-            text: "Le Produit a été modifié avec succès",
-            icon: 'success',
-          });
-          this.fetchStocks();
-          this.clearForm();
-        },
-        (err) => {
-          console.error(err);
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong!',
-          });
-        }
-      );
+ 
+updateStock(id: number, formData: FormData): void {
+  this.stockService.updateStock(id, formData).subscribe({
+    next: (response) => {
+
+      // Actualiser les données affichées
+      this.fetchStocks(); // Appel pour rafraîchir la liste complète des produits
+
+      Swal.fire('Success', 'Le Stock a été modifié avec succès', 'success');
+
+      // Réinitialiser le formulaire
+      this.clearForm();
+    },
+    error: (err) => {
+      console.error('Failed to update stock', err);
+      Swal.fire('Error', 'Something went wrong!', 'error');
     }
+  });
 }
 delete(id: Stock){
   Swal.fire({
@@ -143,12 +144,14 @@ delete(id: Stock){
 }
 
 clearForm() {
+  this.isEditing = null;
   this.selectedStock = null;
   this.stockForm.reset();
   this.showText = false;
   this.showButton=false;
   location.reload();
   this.selectedFile = null;
+  
 }
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -39,46 +39,65 @@ class ProductController extends Controller
     {
         return Product::findOrFail($id);
     }
-
     public function update(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
- 
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'prix' => 'required|numeric',
-            'category' => 'required|string',
-            'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:190048',
-        ]);
-
-        // Manually assign fields to check each for issues
-        $product->name = $validatedData['name'];
-        $product->prix = $validatedData['prix'];
-        $product->category = $validatedData['category'];
-        $product->description = $validatedData['description']; // Use null coalescing for nullable fields
-
-        if ($request->hasFile('image')) {
-            if ($product->image) {
-                Storage::disk('public')->delete($product->image);
+        Log::info("Updating product with ID: $id");
+    
+        try {
+            // Validation
+            $validatedData = $request->validate([
+                'name' => 'nullable|string|max:255',
+                'prix' => 'nullable|numeric',
+                'category' => 'nullable|string|max:255',
+                'description' => 'nullable|string',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Max size as per typical config
+            ]);
+    
+            // Find product or fail
+            $product = Product::findOrFail($id);
+    
+            // Update non-file data
+            $product->fill($validatedData);
+    
+            // Handle file upload
+            if ($request->hasFile('image')) {
+                $oldImage = $product->image;
+                $product->image = $request->file('image')->store('images', 'public');
+    
+                // Delete old image after the new image has been saved
+                if ($oldImage) {
+                    Storage::disk('public')->delete($oldImage);
+                }
             }
-            $product->image = $request->file('image')->store('images', 'public');
+    
+            // Save the product
+            $product->save();
+            Log::info("Product updated successfully: " . json_encode($product));
+    
+            // Return successful response
+            return response()->json($product);
+        } catch (ModelNotFoundException $e) {
+            Log::error("Product not found with ID: $id", ['exception' => $e]);
+            return response()->json(['message' => 'Product not found'], 404);
+        } catch (\Exception $e) {
+            Log::error("Error updating product: " . $e->getMessage(), ['exception' => $e]);
+            return response()->json(['message' => 'Error updating product', 'error' => $e->getMessage()], 500);
         }
-
-        $product->save();  // Perform a single save operation
-
-        return response()->json($product, 200);
     }
+    
 
 
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
         if ($product->image) {
-            Storage::delete($product->image);
+            Storage::disk('public')->delete($product->image);
         }
         $product->delete();
         return response()->json(null, 204);
     }
+
+    
+
 }
 

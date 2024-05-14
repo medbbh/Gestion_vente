@@ -13,6 +13,7 @@ import { AuthStateService } from '../../services/auth-state.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errors:any = null;
+  role:any
   constructor(
     public router: Router,
     public fb: FormBuilder,
@@ -25,11 +26,13 @@ export class LoginComponent implements OnInit {
       password: [],
     });
   }
-  ngOnInit() {}
+  ngOnInit(    
+  ) {}
   onSubmit() {
     this.authService.signin(this.loginForm.value).subscribe(
       (result) => {
         this.responseHandler(result);
+        this.role = result.user.role
       },
       (error) => {
         this.errors = error.error;
@@ -37,13 +40,15 @@ export class LoginComponent implements OnInit {
       () => {
         this.authState.setAuthState(true);
         this.loginForm.reset();
-        this.router.navigate(['dashbord']);
+        
+        this.role == 0 ? this.router.navigate(['client']) : this.router.navigate(['dashbord'])
       }
     );
   }
   // Handle response
   responseHandler(data:any) {
     this.token.handleData(data.access_token);
+    localStorage.setItem("role",data.user.role)
   }
 
 }

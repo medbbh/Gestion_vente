@@ -24,5 +24,9 @@ export class AuthService {
   signin(user: User): Observable<any> {
     return this.http.post<any>(`${environment.api}/auth/login`, user);
   }
+
+  profileUser(): Observable<any> {
+    return this.http.get(`${environment.api}/auth/profile`);
+  }
   
 }
