@@ -24,7 +24,7 @@ const Routing: Routes = [
     path: 'admin-user', component: UserComponent,canActivate: [AuthGuard, AdminGuard]
   },
 
-
+  
 
   // client routes 
   {

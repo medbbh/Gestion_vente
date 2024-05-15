@@ -10,7 +10,7 @@ import { Produit } from '../interfaces/produit';
 export class ServiceService {
 
   constructor(private http: HttpClient) { }
-// ======================== Produits ==========================
+  // ======================== Produits ==========================
   addProduit(produit: FormData): Observable<HttpResponse<Produit>> {
     return this.http.post<Produit>(`${environment.api}/auth/products`, produit, {
       observe: 'response',
@@ -53,5 +53,7 @@ export class ServiceService {
     observe: 'response'
   });
 }
+
+  
   
 }

@@ -26,6 +26,8 @@ Route::group([
     Route::apiResource('products',ProductController::class);
     Route::get('users', [UserController::class, 'index']);
     Route::put('/user/roleUpdate/{id}', [UserController::class, 'RoleUpdate']);
+    Route::get('/UpdateProfile/{id}', [UserController::class, 'show']);
+    Route::put('/UpdateProfile', [UserController::class, 'update'] );
 
     
     

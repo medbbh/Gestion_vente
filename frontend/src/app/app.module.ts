@@ -24,7 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RegisterComponent,
     HomeComponent,
     ProduitComponent,
-    IndexClientComponent
+    IndexClientComponent,
   ],
   imports: [
     BrowserModule,

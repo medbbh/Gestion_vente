@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -28,4 +28,35 @@ class UserController extends Controller
              ], 404);
          }
      }
+
+     //================Update pprofil =================
+     public function show($id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json(['message' => 'Utilisateur non trouvé'], 404);
+        }
+        return response()->json($user);
+    }
+     public function update(Request $request)
+    {
+        $user = $request->user();
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'nullable|numeric',
+            'adress' => 'nullable|string',
+            'newPassword' => 'nullable|string|min:6',
+        ]);
+
+        if (isset($data['newPassword'])) {
+            $data['password'] = Hash::make($data['newPassword']);
+        }
+
+        unset($data['newPassword']);
+
+        $user->update($data);
+
+        return response()->json(['message' => 'Profil mis à jour avec succès']);
+    }
 }

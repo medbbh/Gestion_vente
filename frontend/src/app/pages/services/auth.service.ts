@@ -5,8 +5,8 @@ import { environment } from 'src/environments/environment';
 // User interface
 export class User {
   name!: String;
-  adresse!: String;
-  tel!: Number;
+  adress!: String;
+  phone!: Number;
   email!: String;
   password!: String;
   password_confirmation!: String;
@@ -27,6 +27,11 @@ export class AuthService {
 
   profileUser(): Observable<any> {
     return this.http.get(`${environment.api}/auth/profile`);
+  }
+
+//======================= Update Profile ========================
+  updateProfile(profile: any) {
+    return this.http.put(`${environment.api}/auth/UpdateProfile`, profile);
   }
   
 }
