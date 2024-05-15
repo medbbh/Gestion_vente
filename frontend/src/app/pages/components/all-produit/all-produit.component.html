@@ -1,0 +1,36 @@
+<div class="p-5 lg:mt-10 relative h-[calc(100vh-100px)]">
+    <h1 class="lg:text-6xl font-extrabold text-center mb-14 md:text-2xl sm:text-xl">Tous les produits 🛍️</h1>
+    <div class="grid gap-2 mt-2 md:grid-cols-3 sm:grid-cols-1 lg:grid-cols-6 sm:mx-auto">
+        <div *ngFor="let pdr of produits | paginate: { itemsPerPage: 20, currentPage: pages }" class="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow">
+            <a class="flex justify-center cursor-pointer" routerLink="/client/produit-detail/{{pdr.id}}" >
+                <img class="pb-2 rounded-t-lg" src="../../../../assets/images/signin.jpg" alt="{{pdr.name}}" />
+            </a>
+            <div class="px-4 pb-4 cursor-pointer" routerLink="/client/produit-detail/{{pdr.id}}">
+                <h5 class="text-2xl font-semibold text-gray-900">{{pdr.name}}</h5>
+                <span class="text-lg font-bold text-gray-900">{{pdr.prix}} <span
+                        class="text-sm font-bold text-gray-500">MRU</span></span>
+            </div>
+            <div class="flex items-center justify-around m-2">
+                <button (click)="addToCart(pdr.id)"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center">
+                    Ajouter au panier
+                </button>
+                <button
+                    class="text-red-800 underline focus:ring-4 focus:ring-red-900 font-medium rounded-lg text-xs px-3 py-1.5 text-center">
+                    Acheter
+                </button>
+            </div>
+        </div>
+    </div>
+<div class="pagination mt-10 left-1/2 absolute bottom-5">
+    <pagination-controls previousLabel="" nextLabel="" (pageChange)="pages = $event"></pagination-controls>
+</div>
+</div>
+
+
+<!-- if product already in panier -->
+<div *ngIf="showAlert" class="fixed top-4 right-4 z-50">
+    <div class="p-4 mb-4 text-sm text-white rounded-lg bg-red-700" role="alert">
+      Ce projet et deja dans le panier
+    </div>
+  </div>

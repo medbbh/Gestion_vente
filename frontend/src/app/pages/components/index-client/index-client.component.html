@@ -1,55 +1,125 @@
-
-
-<nav class="bg-white border-gray-200 dark:bg-gray-900 shadow-sm">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+<section class="bg-white dark:bg-gray-900 h-[calc(100vh-70px)] relative">
+  <div class="grid max-w-screen-xl px-4 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+    <div class="mr-auto place-self-center lg:col-span-7">
+      <h1
+        class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
+        Boutique <span class="text-blue-600">RIM</span></h1>
+      <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Ch7al lmarwa7
+        houn yenkteb vih description 3an lboutig</p>
+      <a href="#"
+        class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-black rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+        Shopping
+        <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
+        </svg>
       </a>
-      <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-          </svg>
-      </button>
-      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-          <li>
-            <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-          </li>
-          <li>
-            <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-          </li>
-        </ul>
-      </div>
+      <a href="#"
+        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+        Tous les produits
+      </a>
     </div>
-  </nav>
-  
+    <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+      <!-- auto carousel -->
 
-<div class="grid grid-cols-4 gap-4 m-5 mt-20">
 
-<div *ngFor="let index of [1, 2, 3, 4, 5]" class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-    <a href="#" class="flex justify-center">
-        <img class="p-4 rounded-t-lg" src="data:image/jpeg;base64,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" alt="product image" />
-    </a>
-    <div class="px-5 pb-5">
-        <a href="#">
-            <h5 class="text-xl font-semibold text-gray-900 ">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
-        </a>
-        <div class="flex items-center justify-between">
-            <span class="text-3xl font-bold text-gray-900 ">$599</span>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</a>
+      <div id="default-carousel" class="relative w-full" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+          <!-- Item 1 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="../../../../assets/images/signin.jpg"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+          <!-- Item 2 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="../../../../assets/images/signin.jpg"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+          <!-- Item 3 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="../../../../assets/images/signin.jpg"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+          <!-- Item 4 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="../../../../assets/images/signin.jpg"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
+          <!-- Item 5 -->
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="../../../../assets/images/signin.jpg"
+              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+          </div>
         </div>
+
+        <!-- Slider controls -->
+        <button type="button"
+          class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          data-carousel-prev>
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 1 1 5l4 4" />
+            </svg>
+            <span class="sr-only">Previous</span>
+          </span>
+        </button>
+        <button type="button"
+          class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          data-carousel-next>
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 9 4-4-4-4" />
+            </svg>
+            <span class="sr-only">Next</span>
+          </span>
+        </button>
+      </div>
+
     </div>
+  </div>
+  <div class="animate-bounce text-3xl left-1/2 absolute bottom-5">
+    <fa-icon [icon]="faArrowDown"></fa-icon>
+  </div>
+</section>
+
+<div class="p-5 lg:mt-10 mx-auto">
+  <h1 class="lg:text-6xl font-extrabold text-center mb-14 md:text-2xl sm:text-xl">Meilleures ventes</h1>
+  <div class="grid gap-2 mt-2 md:grid-cols-3 sm:grid-cols-1 lg:grid-cols-4 sm:mx-auto">
+      <div *ngFor="let pdr of produits.slice(0,4)" class="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow">
+          <a class="flex justify-center">
+              <img class="pb-2 rounded-t-lg" src="../../../../assets/images/signin.jpg" alt="{{pdr.name}}" />
+          </a>
+          <div class="px-4 pb-4">
+              <h5 class="text-2xl font-semibold text-gray-900">{{pdr.name}}</h5>
+              <span class="text-lg font-bold text-gray-900">{{pdr.prix}} <span
+                      class="text-sm font-bold text-gray-500">MRU</span></span>
+          </div>
+          <div class="flex items-center justify-around m-2">
+              <button (click)="addToCart(pdr.id)"
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center">
+                  Ajouter au panier
+              </button>
+              <button
+                  class="text-red-800 underline focus:ring-4 focus:ring-red-900 font-medium rounded-lg text-xs px-3 py-1.5 text-center">
+                  Acheter
+              </button>
+          </div>
+      </div>
+  </div>
+
 </div>
 
+<!-- if product already in panier -->
+<div *ngIf="showAlert" class="fixed top-4 right-4 z-50">
+  <div class="p-4 mb-4 text-sm text-white rounded-lg bg-red-700" role="alert">
+    Ce projet et deja dans le panier
+  </div>
 </div>
