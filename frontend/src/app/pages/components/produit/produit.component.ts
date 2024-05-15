@@ -6,9 +6,7 @@ import { ServiceService } from '../../services/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Produit } from '../../interfaces/produit';
 import Swal from 'sweetalert2';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-
+import { faTrash,faEdit } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-produit',
   templateUrl: './produit.component.html',
@@ -26,9 +24,10 @@ export class ProduitComponent {
   profForm!: FormGroup;
   produits: Produit[] = [];
   showText: boolean = false;
-  selectedProduit: Produit | null = null;
   showButton:boolean = false
   selectedFile: File | null = null;
+  isEditing: Produit | null = null;
+  
    
 
   constructor(private fb: FormBuilder, private produitService: ServiceService,private router:Router,private activatedRoute: ActivatedRoute,) {}
@@ -50,11 +49,7 @@ export class ProduitComponent {
   onFileSelect(event: Event): void {
     const element = event.currentTarget as HTMLInputElement;
     let fileList: FileList | null = element.files;
-    if (fileList) {
-        this.selectedFile = fileList[0];
-    } else {
-        this.selectedFile = null;
-    }
+    this.selectedFile = fileList ? fileList[0] : null;
   }
 
   initializeForm() {
@@ -62,30 +57,28 @@ export class ProduitComponent {
       name: ['', Validators.required],
       prix: ['', Validators.required],
       category: ['', Validators.required],
-      description: ['', Validators.required],
-      image: null, // Ne pas initialiser avec this.selectedFile
+      description: [''],
+      image: [null],
     });
   }
 
   updateForm(produit: Produit) {
-    this.selectedProduit = produit;
-    this.updateFormValues(produit);
-  }
-
-  updateFormValues(produit: Produit) {
+    this.isEditing = produit; // Important pour déterminer si on ajoute ou met à jour
     this.profForm.patchValue({
-      id: produit.id,
       name: produit.name,
       prix: produit.prix,
       category: produit.category,
-      description: produit.description,
-      image: produit.image
+      description: produit.description
     });
+    this.selectedFile = null; // Réinitialiser le fichier sélectionné
+
     this.showText = true;
     let ref = document.getElementById('modify');
     ref?.click();
     this.showButton=true
   }
+
+ 
 
   submitForm() {
     const formData = new FormData();
@@ -97,11 +90,11 @@ export class ProduitComponent {
         formData.append('image', this.selectedFile, this.selectedFile.name);
     }
 
-    if (this.selectedProduit) {
-        this.updateProduit(formData);
-    } else {
-        this.addProduits(formData);
-    }
+    if (this.isEditing ) {
+      this.updateProduit(this.isEditing.id, formData);
+  } else {
+      this.addProduits(formData);
+  }
 }
 
 
@@ -110,6 +103,7 @@ export class ProduitComponent {
 addProduits(formData: FormData) {
   this.produitService.addProduit(formData).subscribe(
       () => {
+        
         Swal.fire({
           title: 'Success',
           text: "Le Produit a été ajouté avec succès",
@@ -129,67 +123,51 @@ addProduits(formData: FormData) {
     );
   }
 
-  updateProduit(formData: FormData) {
-    if (this.selectedProduit) {
-      this.produitService.updateProduit(this.selectedProduit.id, formData).subscribe(
-        () => {
-          Swal.fire({
-            title: 'Success',
-            text: "Le Produit a été modifié avec succès",
-            icon: 'success',
-          });
-          this.fetchProduits();
-          this.clearForm();
-        },
-        (err) => {
-          console.error(err);
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong!',
-          });
-        }
-      );
-    }
-}
-
-
-  delete(id: Produit){
-    Swal.fire({
-    title: "Supprimer le produit? ",
-    text: "Êtes-vous sûr de vouloir supprimer ce produit ?",
-    
-    showDenyButton: true,
-    // showCancelButton: true,
-    denyButtonText: `Supprimer`,
-    confirmButtonText: "Annuler",
-
-    
-    
-  }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
-    if (result.isConfirmed) {
-      // Swal.fire("Saved!", "The Produit is not delete", "success");
-    } else if (result.isDenied) {
-      this.produitService.delete(id).subscribe(()=>{
-        // console.log(res);
-        location.reload();
-      });
-      Swal.fire("Produit supprimé !");
-      
-    }
-  });
+  updateProduit(id: number, formData: FormData): void {
+    this.produitService.updateProduit(id, formData).subscribe({
+      next: (response) => {
   
-}
-
-  clearForm() {
-    this.selectedProduit = null;
-    this.profForm.reset();
-    this.showText = false;
-    this.showButton=false;
-    location.reload();
-    this.selectedFile = null;
+        // Actualiser les données affichées
+        this.fetchProduits(); // Appel pour rafraîchir la liste complète des produits
+  
+        Swal.fire('Success', 'Le Produit a été modifié avec succès', 'success');
+  
+        // Réinitialiser le formulaire
+        this.clearForm();
+      },
+      error: (err) => {
+        console.error('Failed to update product', err);
+        Swal.fire('Error', 'Something went wrong!', 'error');
+      }
+    });
   }
+  
+  
+
+
+  delete(produit: Produit) {
+    Swal.fire({
+      title: "Supprimer le produit?",
+      text: "Êtes-vous sûr de vouloir supprimer ce produit ?",
+      showDenyButton: true,
+      denyButtonText: `Supprimer`,
+      confirmButtonText: "Annuler",
+    }).then((result) => {
+      if (result.isDenied) {
+        this.produitService.delete(produit.id).subscribe(() => {
+          this.produits = this.produits.filter(p => p.id !== produit.id);
+          Swal.fire("Produit supprimé !");
+        });
+      }
+    });
+  }
+clearForm() {
+  this.isEditing = null;
+  this.selectedFile = null;
+  this.profForm.reset();
+  this.showText = false;
+  this.showButton = false;
+}
   
 
 }

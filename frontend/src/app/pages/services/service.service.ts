@@ -29,18 +29,35 @@ export class ServiceService {
     });
   }
 
-  delete(produit:Produit){
-    return this.http.delete(`${environment.api}/auth/products/${produit.id}`, {
+  delete(id: number){
+    return this.http.delete(`${environment.api}/auth/products/${id}`, {
       observe: 'response',
     });
   }
   
   
-  updateProduit(id: number, formData: any): Observable<HttpResponse<Produit>>{
-    return this.http.put<Produit>(`${environment.api}/auth/products/${id}`, formData, {
-      observe: 'response'
-    });
- }
+  // updateProduit(id: number, formData: FormData): Observable<HttpResponse<Produit>> {
+  //   return this.http.put<Produit>(`${environment.api}/auth/products/${id}`, formData, {
+  //     observe: 'response'
+      
+  //   });
+
+  // }
+  updateProduit(id: number, formData: FormData) {
+    // Ajouter le champ _method pour simuler PUT
+    formData.append('_method', 'PUT');
+
+    // URL de l'API
+    const url = `${environment.api}/auth/products/${id}`;
+
+    // Envoyer la requête POST qui est traitée comme PUT
+    return this.http.post(url, formData);
+  }
   
+  getProduitById(id: number): Observable<HttpResponse<Produit>> {
+  return this.http.get<Produit>(`${environment.api}/auth/products/${id}`, {
+    observe: 'response'
+  });
+}
   
 }

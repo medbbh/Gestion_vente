@@ -12,6 +12,7 @@ import { RegisterComponent } from './pages/components/register/register.componen
 import { AuthInterceptor } from './pages/services/auth.interceptor';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProduitComponent } from './pages/components/produit/produit.component';
+import { StockComponent } from './pages/components/stock/stock.component';
 import { IndexClientComponent } from './pages/components/index-client/index-client.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClientNavbarComponent } from './pages/components/client-navbar/client-navbar.component';
@@ -32,7 +33,8 @@ import { ProduitDetailComponent } from './pages/components/produit-detail/produi
     PanierComponent,
     ClientComponent,
     AllProduitComponent,
-    ProduitDetailComponent
+    ProduitDetailComponent,
+    StockComponent,
   ],
   imports: [
     BrowserModule,

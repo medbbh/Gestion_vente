@@ -68,16 +68,26 @@
             "production": {
               "browserTarget": "frontend:build:production"
             },
+            
             "development": {
               "browserTarget": "frontend:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+
+          "options": {
+            "disableHostCheck": true
+           
+
+          }
+          
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "frontend:build"
+           
+
           }
         },
         "test": {
