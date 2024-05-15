@@ -18,8 +18,7 @@ export class ProduitComponent {
   faTrash= faTrash;
   faEdit= faEdit;
 
-
-
+  index = 0
   pages: number = 1;
   profForm!: FormGroup;
   produits: Produit[] = [];

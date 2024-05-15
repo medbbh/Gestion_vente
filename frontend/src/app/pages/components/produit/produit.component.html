@@ -36,29 +36,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pdr of produits | paginate: { itemsPerPage: 5, currentPage: pages }"
+            <tr *ngFor="let pdr of produits | paginate: { itemsPerPage: 5, currentPage: pages };let i = index "
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{pdr.id}}
+                    {{i+1}}
                 </th>
                 <td>{{pdr.name}}</td>
                 <td>{{pdr.prix}}</td>
                 <td>{{pdr.category}}</td>
-                <td>{{pdr.description}}</td>
+                <td class="max-w-80">{{pdr.description.slice(0,125)}}</td>
                 <td>
                     <img *ngIf="pdr.image" [src]="'http://localhost:8000/storage/' + pdr.image" alt="Product Image"
                         style="width: 90px; height: 60px;">
                 </td>
 
-                <td>
+                <td class="flex justify-around p-5">
                     <button
-                        class="bt1"
-                        (click)="updateForm(pdr)"><img src="..\..\..\..\assets\icons\Frame 52787.svg"
-                            alt="metronic"></button>
+                        class="text-2xl"
+                        (click)="updateForm(pdr)"><fa-icon [icon]="faEdit" [classes]="['text-green-800']"></fa-icon></button>
                     <button
-                        class="bt2"
-                        (click)="delete(pdr)"><img src="..\..\..\..\assets\icons\🦆 icon _trash_.svg"
-                            alt="metronic"></button>
+                        class="text-2xl"
+                        (click)="delete(pdr)"><fa-icon [icon]="faTrash" [classes]="['text-red-600']"></fa-icon></button>
 
 
                 </td>
