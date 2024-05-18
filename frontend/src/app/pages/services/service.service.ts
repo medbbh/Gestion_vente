@@ -17,6 +17,12 @@ export class ServiceService {
     });
   }
 
+  produitById(id:any){
+    return this.http.get<Produit>(`${environment.api}/auth/products/`+id, {
+      observe: 'response',
+    });
+  }
+
   listProduit(): Observable<HttpResponse<Produit[]>> {
     return this.http.get<Produit[]>(`${environment.api}/auth/products`, {
       observe: 'response',

@@ -1,34 +1,29 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ServiceService } from '../../services/service.service';
 import { Produit } from '../../interfaces/produit';
 import { HttpResponse } from '@angular/common/http';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { PanierService } from '../../services/panier.service';
-// import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-index-client',
-  templateUrl: './index-client.component.html',
-  styleUrls: ['./index-client.component.css']
+  selector: 'app-produit-detail',
+  templateUrl: './produit-detail.component.html',
+  styleUrls: ['./produit-detail.component.css']
 })
-export class IndexClientComponent {
+export class ProduitDetailComponent {
 
-  faArrowDown = faArrowDown
-  produits: Produit[] = [];
+  id:any
+  produit:Produit | undefined
   cart: Produit[] = [];
   showAlert = false;
 
+  constructor(private panierService: PanierService,private route:ActivatedRoute,private produitService:ServiceService){}
   ngOnInit(): void {
-    this.fetchProduits();
-  }
+    this.id = this.route.snapshot.params['id'];
+    this.produitService.produitById(this.id).subscribe((response: HttpResponse<Produit>) => {
 
-  constructor(private panierService: PanierService,private produitService: ServiceService) { }
-
-  fetchProduits() {
-    this.produitService.listProduit().subscribe((response: HttpResponse<Produit[]>) => {
-      const data: Produit[] = response.body || [];
-      this.produits = data;
-    });
+        this.produit = response.body as Produit
+      });
   }
 
   addToCart(id: any): void {
@@ -61,8 +56,5 @@ export class IndexClientComponent {
       }
     });
   }
-
-
-
-
 }
+

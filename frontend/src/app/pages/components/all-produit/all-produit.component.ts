@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
-import { ServiceService } from '../../services/service.service';
 import { Produit } from '../../interfaces/produit';
+import { ServiceService } from '../../services/service.service';
 import { HttpResponse } from '@angular/common/http';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { PanierService } from '../../services/panier.service';
-// import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-index-client',
-  templateUrl: './index-client.component.html',
-  styleUrls: ['./index-client.component.css']
+  selector: 'app-all-produit',
+  templateUrl: './all-produit.component.html',
+  styleUrls: ['./all-produit.component.css']
 })
-export class IndexClientComponent {
+export class AllProduitComponent {
 
-  faArrowDown = faArrowDown
+  pages: number = 1;
   produits: Produit[] = [];
   cart: Produit[] = [];
   showAlert = false;
@@ -30,7 +28,6 @@ export class IndexClientComponent {
       this.produits = data;
     });
   }
-
   addToCart(id: any): void {
     let showAlert = false;
 
@@ -61,8 +58,4 @@ export class IndexClientComponent {
       }
     });
   }
-
-
-
-
 }
