@@ -1,16 +1,16 @@
-<div class="p-5 lg:mt-10 relative h-[calc(100vh-100px)]">
+<div class="p-5 lg:mt-10 h-[calc(100vh-100px)]">
     <h1 class="lg:text-6xl font-extrabold text-center mb-14 md:text-2xl sm:text-xl">Tous les produits 🛍️</h1>
     <div class="grid gap-2 mt-2 md:grid-cols-3 sm:grid-cols-1 lg:grid-cols-6 sm:mx-auto">
-        <div *ngFor="let pdr of produits | paginate: { itemsPerPage: 20, currentPage: pages }" class="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow">
+        <div *ngFor="let pdr of produits | paginate: { itemsPerPage: 20, currentPage: pages }" class="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow relative">
             <a class="flex justify-center cursor-pointer" routerLink="/client/produit-detail/{{pdr.id}}" >
                 <img class="pb-2 rounded-t-lg" src="../../../../assets/images/signin.jpg" alt="{{pdr.name}}" />
             </a>
-            <div class="px-4 pb-4 cursor-pointer" routerLink="/client/produit-detail/{{pdr.id}}">
-                <h5 class="text-2xl font-semibold text-gray-900">{{pdr.name}}</h5>
+            <div class="px-4 pb-4 cursor-pointer mb-10" routerLink="/client/produit-detail/{{pdr.id}}">
+                <h5 class="truncate text-2xl font-semibold text-gray-900">{{pdr.name}}</h5>
                 <span class="text-lg font-bold text-gray-900">{{pdr.prix}} <span
                         class="text-sm font-bold text-gray-500">MRU</span></span>
             </div>
-            <div class="flex items-center justify-around m-2">
+            <div class="flex items-center justify-around m-2 bottom-1 absolute">
                 <button (click)="addToCart(pdr.id)"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center">
                     Ajouter au panier
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-<div class="pagination mt-10 left-1/2 absolute bottom-5">
+<div class="pagination my-10 flex justify-center">
     <pagination-controls previousLabel="" nextLabel="" (pageChange)="pages = $event"></pagination-controls>
 </div>
 </div>

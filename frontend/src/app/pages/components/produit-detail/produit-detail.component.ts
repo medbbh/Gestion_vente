@@ -4,6 +4,7 @@ import { ServiceService } from '../../services/service.service';
 import { Produit } from '../../interfaces/produit';
 import { HttpResponse } from '@angular/common/http';
 import { PanierService } from '../../services/panier.service';
+import { faPlus,faMinus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-produit-detail',
@@ -12,6 +13,10 @@ import { PanierService } from '../../services/panier.service';
 })
 export class ProduitDetailComponent {
 
+  // icons
+  faPlus = faPlus
+  faminus = faMinus
+  
   id:any
   produit:Produit | undefined
   cart: Produit[] = [];
