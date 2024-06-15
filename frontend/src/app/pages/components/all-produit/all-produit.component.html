@@ -1,36 +1,57 @@
 <div class="p-5 lg:mt-10 h-[calc(100vh-100px)]">
-    <h1 class="lg:text-6xl font-extrabold text-center mb-14 md:text-2xl sm:text-xl">Tous les produits 🛍️</h1>
-    <div class="grid gap-2 mt-2 md:grid-cols-3 sm:grid-cols-1 lg:grid-cols-6 sm:mx-auto">
-        <div *ngFor="let pdr of produits | paginate: { itemsPerPage: 20, currentPage: pages }" class="w-full max-w-xs bg-white border border-gray-200 rounded-lg shadow relative">
-            <a class="flex justify-center cursor-pointer" routerLink="/client/produit-detail/{{pdr.id}}" >
-                <img class="pb-2 rounded-t-lg" src="../../../../assets/images/signin.jpg" alt="{{pdr.name}}" />
-            </a>
-            <div class="px-4 pb-4 cursor-pointer mb-10" routerLink="/client/produit-detail/{{pdr.id}}">
-                <h5 class="truncate text-2xl font-semibold text-gray-900">{{pdr.name}}</h5>
-                <span class="text-lg font-bold text-gray-900">{{pdr.prix}} <span
-                        class="text-sm font-bold text-gray-500">MRU</span></span>
+
+    <h1 class="text-3xl lg:text-6xl font-extrabold text-center mb-14 md:text-2xl sm:text-xl">Tous les produits 🛍️</h1>
+    <div class="grid gap-2 mt-2 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-5 sm:mx-auto">
+        <!-- v> -->
+        <div *ngFor="let pdr of produits | paginate: { itemsPerPage: 20, currentPage: pages }"
+            class="flex flex-col bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+            <div class="relative lg:w-full h-48 md:h-64 flex justify-center items-center">
+                <a class="cursor-pointer w-full h-full" [routerLink]="['/client/produit-detail', pdr.id]">
+                    <img [src]="'http://localhost:8000/storage/' + pdr.image" alt="shopping image"
+                        class="object-cover w-full h-full">
+                </a>
             </div>
-            <div class="flex items-center justify-around m-2 bottom-1 absolute">
-                <button (click)="addToCart(pdr.id)"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center">
-                    Ajouter au panier
-                </button>
-                <button
-                    class="text-red-800 underline focus:ring-4 focus:ring-red-900 font-medium rounded-lg text-xs px-3 py-1.5 text-center">
-                    Acheter
-                </button>
+            <div class="flex-auto p-4 flex flex-col justify-between">
+                <div class="mb-3">
+                    <h1 class="text-lg md:text-xl font-semibold">{{pdr.name}}</h1>
+                    <div class="text-lg md:text-xl font-semibold text-green-700">{{pdr.prix}} MRU</div>
+                    <div class="mt-2 text-sm md:text-base font-medium text-gray-500">Dans le stock</div>
+                </div>
+                <div class="mt-4 flex gap-2 md:gap-4 text-sm">
+                    <button type="button" (click)="addToCart(pdr.id)"
+                        class="flex-grow  py-2 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ">Ajouter
+                        au panier</button>
+                    <button type="button" (click)="commander(pdr)"
+                        class="flex-grow py-2  bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white transition ease-in duration-200 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
+                        Commander</button>
+                </div>
             </div>
         </div>
+
     </div>
-<div class="pagination my-10 flex justify-center">
-    <pagination-controls previousLabel="" nextLabel="" (pageChange)="pages = $event"></pagination-controls>
-</div>
+    <div class="pagination my-10 flex justify-center">
+        <pagination-controls previousLabel="" nextLabel="" (pageChange)="pages = $event"></pagination-controls>
+    </div>
 </div>
 
 
 <!-- if product already in panier -->
 <div *ngIf="showAlert" class="fixed top-4 right-4 z-50">
     <div class="p-4 mb-4 text-sm text-white rounded-lg bg-red-700" role="alert">
-      Ce projet et deja dans le panier
+        Ce produit et deja dans le panier
     </div>
-  </div>
+</div>
+
+<!-- if product added successfuly in panier -->
+<div *ngIf="showAlertSuccess" class="fixed top-4 right-4 z-50">
+    <div class="p-4 mb-4 text-sm text-white rounded-lg bg-green-700" role="alert">
+        Produit ajouté à votre panier.
+    </div>
+</div>
+
+<!-- commande succeed -->
+<div *ngIf="showAlertCommande" class="fixed top-4 right-4 z-50">
+    <div class="p-4 mb-4 text-sm text-white rounded-lg bg-green-700" role="alert">
+        Votre commande est bien passée
+    </div>
+</div>

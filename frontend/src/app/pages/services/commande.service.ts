@@ -1,0 +1,38 @@
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Commande } from '../interfaces/commande';
+import { environment } from 'src/environments/environment';
+import { Panier } from '../interfaces/panier';
+import { Produit } from '../interfaces/produit';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CommandeService {
+
+  constructor(private http: HttpClient) { }
+
+  placeOrder(commande: Commande) {
+    return this.http.post(`${environment.api}/auth/commandes/`, commande);
+  }
+
+  listCommande(): Observable<HttpResponse<Commande[]>> {
+    return this.http.get<Commande[]>(`${environment.api}/auth/commandes`, {
+      observe: 'response',
+    });
+  }
+
+  getCommandeById(id: number): Observable<HttpResponse<Commande>> {
+    return this.http.get<Commande>(`${environment.api}/auth/commandes/${id}`, {
+      observe: 'response'
+    });
+  }
+  delete(id: number) {
+    return this.http.delete(`${environment.api}/auth/commandes/${id}`, {
+      observe: 'response',
+    });
+  }
+
+
+}

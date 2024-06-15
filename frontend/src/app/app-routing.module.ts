@@ -11,13 +11,17 @@ import { ClientComponent } from './pages/components/client/client.component';
 import { PanierComponent } from './pages/components/panier/panier.component';
 import { AllProduitComponent } from './pages/components/all-produit/all-produit.component';
 import { ProduitDetailComponent } from './pages/components/produit-detail/produit-detail.component';
+import { CommandeComponent } from './pages/components/commande/commande.component';
+import { ProduitComponent } from './pages/components/produit/produit.component';
+import { UserComponent } from './pages/components/user/user.component';
+import { StockComponent } from './pages/components/stock/stock.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/client', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent, },
-  { path: 'dashbord', component: LayoutComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'dashbord', component: LayoutComponent, canActivate: [AuthGuard, AdminGuard], },
   {
     path: 'client', component: ClientComponent, children: [
       {
@@ -32,8 +36,25 @@ const routes: Routes = [
       {
         path: 'panier', component: PanierComponent,
       },
+      {
+        path: 'commande', component: CommandeComponent,
+        // canActivateChild: [AuthGuard, ClienGuard]
+      },
     ]
   },
+  {
+    path: 'admin', component: LayoutComponent, canActivate: [AuthGuard, AdminGuard], children: [
+      {
+        path: 'produit', component: ProduitComponent, canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'user', component: UserComponent, canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'stock', component: StockComponent, canActivate: [AuthGuard, AdminGuard]
+      },
+    ]
+  }
 ];
 
 @NgModule({

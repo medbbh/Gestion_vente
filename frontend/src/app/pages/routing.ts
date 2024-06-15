@@ -9,22 +9,22 @@ import { RegisterComponent } from "./components/register/register.component";
 
 
 const Routing: Routes = [
-  {
-    path: 'admin-produit', component: ProduitComponent, canActivate: [AuthGuard, AdminGuard]
-  },
-  {
-    path: 'admin-user', component: UserComponent, canActivate: [AuthGuard, AdminGuard]
-  },
-  {
-    path: 'admin-user', component: UserComponent,canActivate: [AuthGuard, AdminGuard]
-  },
+  // {
+  //   path: 'admin-produit', component: ProduitComponent, canActivate: [AuthGuard, AdminGuard]
+  // },
+  // {
+  //   path: 'admin-user', component: UserComponent, canActivate: [AuthGuard, AdminGuard]
+  // },
+  // {
+  //   path: 'admin-user', component: UserComponent,canActivate: [AuthGuard, AdminGuard]
+  // },
 
-  {
-    path:'admin-stock', component:StockComponent,canActivate: [AuthGuard, AdminGuard]
-  },
+  // {
+  //   path:'admin-stock', component:StockComponent,canActivate: [AuthGuard, AdminGuard]
+  // },
   
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent, },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'register', component: RegisterComponent, },
 
   // client routes 
   // {

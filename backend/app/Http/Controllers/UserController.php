@@ -5,10 +5,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+
 class UserController extends Controller
 {
     public function index(){
-        $users = User::select('id','name', 'adress', 'phone', 'email', 'role')->get();
+        $users = User::select('id','name', 'adress', 'phone', 'email', 'role','montant')->get();
         return response()->json($users,200);
      }
  
@@ -28,6 +29,8 @@ class UserController extends Controller
              ], 404);
          }
      }
+    
+
 
      //================Update pprofil =================
      public function show($id)

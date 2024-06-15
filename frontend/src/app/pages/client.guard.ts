@@ -1,29 +1,21 @@
-import { Injectable } from "@angular/core";
-import { CanActivate, Router } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { CanActivateChild, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+export class ClienGuard implements CanActivateChild {
+  constructor(private router: Router) {}
 
-export class ClienGuard implements CanActivate {
-  constructor(private router: Router) { }
+  canActivateChild(): boolean {
+    const role = localStorage.getItem('role');
 
-  token: any;
-  role:any
-
-  canActivate(){
-
-    this.token = localStorage.getItem('auth_token');
-    this.role = localStorage.getItem('role');
-
-
-    if(this.role == 0){
+    // Assuming '0' represents the client role
+    if (role == '0') {
       return true;
+    } else {
+      this.router.navigate(['/admin-home']);
+      return false;
     }
-    else{
-      return this.router.navigate(['admin-home'])
-    }
-
   }
-
 }

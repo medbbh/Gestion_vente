@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\CommandeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,8 +31,10 @@ Route::group([
     Route::put('/user/roleUpdate/{id}', [UserController::class, 'RoleUpdate']);
     Route::get('/UpdateProfile/{id}', [UserController::class, 'show']);
     Route::put('/UpdateProfile', [UserController::class, 'update'] );
+    Route::apiResource('commandes',CommandeController::class);
+    // Route::get('/user/balance/{id}', [UserController::class, 'getBalance']);
+    // Route::post('/user/deduct-balance/{id}', [UserController::class, 'deductBalance']);
 
-    
-    
+
 });
 

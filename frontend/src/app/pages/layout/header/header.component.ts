@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService, User } from '../../services/auth.service';
 @Component({
   selector: 'app-header',
-  templateUrl:'./header.component.html',
+  templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
@@ -14,9 +14,9 @@ export class HeaderComponent {
   newPassword: string = '';
   confirmNewPassword: string = '';
 
-  titre='Gestion de vente enlige'
+  titre = 'Gestion de vente enlige'
   UserProfile!: User;
-  constructor(public authService: AuthService,private router :Router) {
+  constructor(public authService: AuthService, private router: Router) {
     this.authService.profileUser().subscribe((data: any) => {
       this.UserProfile = data;
     });
@@ -27,8 +27,8 @@ export class HeaderComponent {
   }
 
   updateProfile() {
-     // Vérifie si les nouveaux mots de passe correspondent
-     if (this.newPassword !== this.confirmNewPassword) {
+    // Vérifie si les nouveaux mots de passe correspondent
+    if (this.newPassword !== this.confirmNewPassword) {
       console.error("Les nouveaux mots de passe ne correspondent pas");
       return;
     }
@@ -45,14 +45,13 @@ export class HeaderComponent {
 
   cancelEdit() {
     this.editing = false;
-    
+
   }
 
-goToHome() {
+  goToHome() {
     localStorage.clear()
-    this.router.navigate(['']);
-
-}
+    this.router.navigate(['/login']);
+  }
 
 
 }

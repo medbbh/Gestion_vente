@@ -20,6 +20,7 @@ import { PanierComponent } from './pages/components/panier/panier.component';
 import { ClientComponent } from './pages/components/client/client.component';
 import { AllProduitComponent } from './pages/components/all-produit/all-produit.component';
 import { ProduitDetailComponent } from './pages/components/produit-detail/produit-detail.component';
+import { CommandeComponent } from './pages/components/commande/commande.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ProduitDetailComponent } from './pages/components/produit-detail/produi
     AllProduitComponent,
     ProduitDetailComponent,
     StockComponent,
+    CommandeComponent,
   ],
   imports: [
     BrowserModule,

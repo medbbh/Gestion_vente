@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  .animate-marquee {
+    /* font-family: "Reddit Mono", monospace; */
+    font-family: "Nanum Gothic Coding", monospace;
+
+    animation: marquee 15s linear infinite;
+  }
+
+  

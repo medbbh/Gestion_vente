@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       (result) => {
         this.responseHandler(result);
         this.role = result.user.role
+        console.log(result.user.id)
       },
       (error) => {
         this.errors = error.error;
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
         this.authState.setAuthState(true);
         this.loginForm.reset();
         
-        this.role == 0 ? this.router.navigate(['client']) : this.router.navigate(['dashbord'])
+        this.role == 0 ? this.router.navigate(['/client/']) : this.router.navigate(['/dashbord'])
       }
     );
   }
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit {
   responseHandler(data:any) {
     this.token.handleData(data.access_token);
     localStorage.setItem("role",data.user.role)
+    localStorage.setItem("userId",data.user.id)
   }
 
 }
