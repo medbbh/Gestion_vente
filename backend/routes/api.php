@@ -32,8 +32,8 @@ Route::group([
     Route::get('/UpdateProfile/{id}', [UserController::class, 'show']);
     Route::put('/UpdateProfile', [UserController::class, 'update'] );
     Route::apiResource('commandes',CommandeController::class);
-    // Route::get('/user/balance/{id}', [UserController::class, 'getBalance']);
-    // Route::post('/user/deduct-balance/{id}', [UserController::class, 'deductBalance']);
+    Route::get('/user/montant/{id}', [UserController::class, 'getMontant']);
+    Route::put('/user/editMontant/{id}', [UserController::class, 'editMontant']);
 
 
 });

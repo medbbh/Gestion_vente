@@ -4,7 +4,7 @@ import { LoginComponent } from './pages/components/login/login.component';
 import { RegisterComponent } from './pages/components/register/register.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { IndexClientComponent } from './pages/components/index-client/index-client.component';
-import { AuthGuard } from './pages/auth.guard';
+import { AuthGuard, AuthGuardAdmin } from './pages/auth.guard';
 import { ClienGuard } from './pages/client.guard';
 import { AdminGuard } from './pages/admin.guard';
 import { ClientComponent } from './pages/components/client/client.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/client', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent, },
-  { path: 'dashbord', component: LayoutComponent, canActivate: [AuthGuard, AdminGuard], },
+  // { path: 'dashbord', component: LayoutComponent },
   {
     path: 'client', component: ClientComponent, children: [
       {
@@ -43,15 +43,19 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'admin', component: LayoutComponent, canActivate: [AuthGuard, AdminGuard], children: [
+    path: 'admin', component: LayoutComponent,
+    children: [
       {
-        path: 'produit', component: ProduitComponent, canActivate: [AuthGuard, AdminGuard]
+        path: '', redirectTo: 'produit', pathMatch: 'full',
+      }, 
+      {
+        path: 'produit', component: ProduitComponent,
       },
       {
-        path: 'user', component: UserComponent, canActivate: [AuthGuard, AdminGuard]
+        path: 'user', component: UserComponent,
       },
       {
-        path: 'stock', component: StockComponent, canActivate: [AuthGuard, AdminGuard]
+        path: 'stock', component: StockComponent,
       },
     ]
   }

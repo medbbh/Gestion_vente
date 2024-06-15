@@ -34,5 +34,11 @@ export class CommandeService {
     });
   }
 
+  getMontant(id:any){
+    return this.http.get<any>(`${environment.api}/auth/user/montant/${id}`,{
+      observe: 'response'
+    })
+  }
+  
 
 }

@@ -19,6 +19,7 @@ export class PanierComponent implements OnInit {
   prixTotal: number = 0;
   showAlert = false;
   userId:number
+  montant:any
 
   constructor(private panierService: PanierService, private produitService: ServiceService, private commandeService: CommandeService, private router: Router) { 
     this.userId = Number(localStorage.getItem('userId'));
@@ -26,8 +27,20 @@ export class PanierComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCartFromLocalStorage();
-
+    this.getMontant(this.userId)
+    
   }
+
+  getMontant(userId:any){
+    this.commandeService.getMontant(userId).subscribe((response) => {
+      this.montant = response.body[0].montant;
+      console.log('Montant:', this.montant);
+    },
+    (error) => {
+      console.error('Error fetching montant:', error);
+    })
+  }
+
 
   loadCartFromLocalStorage(): void {
     const storedObject = localStorage.getItem('cart');

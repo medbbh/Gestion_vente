@@ -8,21 +8,18 @@ import { CanActivate, Router } from "@angular/router";
 export class AdminGuard implements CanActivate {
   constructor(private router: Router) { }
 
-  token: any;
-  role:any
+  role: any
 
-  canActivate(){
-
-    this.token = localStorage.getItem('auth_token');
+  canActivate(): boolean {
     this.role = localStorage.getItem('role');
+    console.log("hellooooo")
 
-    // console.log(this.data.user_type)
-
-    if(this.role == 1){
+    if (this.role == 1) {
       return true;
     }
-    else{
-      return this.router.navigate([''])
+    else {
+      this.router.navigate(['/client/'])
+      return false
     }
 
   }

@@ -29,9 +29,20 @@ class UserController extends Controller
              ], 404);
          }
      }
+
+     public function getMontant($id){
+        $montant = User::select('montant')->where('id', $id)->get();
+        return response()->json($montant);
+     }
+     public function editMontant(Request $new_montant,$id){
+        $user = User::find($id);
+        // Make sure you've got the Page model
+        if($user) {
+            $user->montant = $new_montant;
+            $user->save();
+        }
+     }
     
-
-
      //================Update pprofil =================
      public function show($id)
     {
