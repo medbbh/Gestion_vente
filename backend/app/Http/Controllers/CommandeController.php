@@ -28,6 +28,8 @@ class CommandeController extends Controller
     'montant_total'
 ]));
 
+    
+
     $commande->save();
 
     return response()->json($commande, 201);

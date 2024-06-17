@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { Produit } from '../../interfaces/produit';
 import { HttpResponse } from '@angular/common/http';
-import { faArrowDown, faL } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faMobileScreenButton,faFishFins,faBottleWater,faShirt,faCouch } from '@fortawesome/free-solid-svg-icons';
 import { PanierService } from '../../services/panier.service';
 import { Panier } from '../../interfaces/panier';
 import { CommandeService } from '../../services/commande.service';
@@ -16,7 +16,15 @@ import { Router } from '@angular/router';
 })
 export class IndexClientComponent implements OnInit {
 
+  // icons
   faArrowDown = faArrowDown;
+  faMobileScreenButton = faMobileScreenButton
+  faFishFins = faFishFins
+  faBottleWater = faBottleWater
+  faShirt = faShirt
+  faCouch = faCouch
+
+
   produits: Produit[] = [];
   cart: Panier[] = []; // Change to Panier[] to reflect quantity
   showAlert = false;
@@ -24,12 +32,17 @@ export class IndexClientComponent implements OnInit {
   showAlertCommande=false
   product_id: any
   montant_total: any
+  soldeAlert = false
 
   constructor(private panierService: PanierService, private produitService: ServiceService, private commandeService: CommandeService,private router: Router) { }
 
   ngOnInit(): void {
     this.fetchProduits();
     this.cart = this.panierService.getCartItems(); // Initialize cart from PanierService
+  }
+  
+  closeModal() {
+    this.soldeAlert = false
   }
 
   fetchProduits() {
@@ -76,7 +89,6 @@ export class IndexClientComponent implements OnInit {
 
   getProductId(id: any) {
     this.produitService.produitById(id).subscribe((data) => {
-      this.product_id = data.body?.id
       this.montant_total = data.body?.prix
     })
   }
@@ -90,8 +102,18 @@ export class IndexClientComponent implements OnInit {
         quantite,
         client_id,
       }
+      console.log(data.montant_total)
       this.commandeService.placeOrder(orderData).subscribe(() => {
+        this.commandeService.payer(data.montant_total, Number(localStorage.getItem("userId"))).subscribe(
+          paymentResponse => {
         this.showAlertCommande = true;
+
+          },
+          paymentError => {
+            // Handle payment error
+            this.soldeAlert = true
+          }
+        );
 
         if (this.showAlertCommande) {
           this.showAlertCommande = true;

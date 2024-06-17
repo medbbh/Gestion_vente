@@ -39,6 +39,9 @@ export class CommandeService {
       observe: 'response'
     })
   }
-  
 
+  payer(montant:any ,id:any){
+    return this.http.put(`${environment.api}/auth/user/editMontant/${id}`,{ new_montant: montant });
+  }
+  
 }

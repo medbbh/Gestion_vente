@@ -47,7 +47,7 @@ const routes: Routes = [
     children: [
       {
         path: '', redirectTo: 'produit', pathMatch: 'full',
-      }, 
+      },  
       {
         path: 'produit', component: ProduitComponent,
       },

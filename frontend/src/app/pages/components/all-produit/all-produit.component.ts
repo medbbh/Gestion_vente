@@ -21,6 +21,7 @@ export class AllProduitComponent {
   showAlert = false;
   showAlertSuccess=false
   showAlertCommande=false
+  soldeAlert = false
 
   ngOnInit(): void {
     this.fetchProduits();
@@ -29,6 +30,9 @@ export class AllProduitComponent {
 
   constructor(private panierService: PanierService,private produitService: ServiceService,private commandeService : CommandeService,private router:Router) { }
 
+    closeModal() {
+    this.soldeAlert = false
+  }
   fetchProduits() {
     this.produitService.listProduit().subscribe((response: HttpResponse<Produit[]>) => {
       const data: Produit[] = response.body || [];
@@ -79,14 +83,23 @@ export class AllProduitComponent {
         montant_total: produit.prix
       };
       this.commandeService.placeOrder(commande).subscribe(response => {
-        this.showAlertCommande = true;
+        this.commandeService.payer(produit.prix, Number(localStorage.getItem("userId"))).subscribe(
+          paymentResponse => {
+            // Payment succeeded, now show alert and remove product
+            this.showAlertCommande = true;
+            if (this.showAlertCommande) {
+              this.showAlertCommande = true;
+              setTimeout(() => {
+                this.showAlertCommande = false;
+              }, 2000);
+            }
+          },
+          paymentError => {
+            // Handle payment error
+            this.soldeAlert = true
+          }
+        );
 
-        if (this.showAlertCommande) {
-          this.showAlertCommande = true;
-          setTimeout(() => {
-            this.showAlertCommande = false;
-          }, 2000);
-        }
       }, error => {
         console.error('Error placing order:', error);
       });
