@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         this.authState.setAuthState(true);
         this.loginForm.reset();
         
-        this.role == 0 ? this.router.navigate(['/client/']) : this.router.navigate(['/dashbord'])
+        this.role == 0 ? this.router.navigate(['/client/']) : this.router.navigate(['/admin'])
       }
     );
   }

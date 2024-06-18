@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/client', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent, },
-  { path: 'dashbord', component: LayoutComponent, canActivate: [AuthGuard, AdminGuard], },
+  // { path: 'dashbord', component: LayoutComponent, canActivate: [AuthGuard, AdminGuard], },
   {
     path: 'client', component: ClientComponent, children: [
       {
@@ -43,15 +43,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'admin', component: LayoutComponent, canActivate: [AuthGuard, AdminGuard], children: [
+    path: 'admin', component: LayoutComponent, children: [
       {
-        path: 'produit', component: ProduitComponent, canActivate: [AuthGuard, AdminGuard]
+        path: 'produit', component: ProduitComponent,
       },
       {
-        path: 'user', component: UserComponent, canActivate: [AuthGuard, AdminGuard]
+        path: 'user', component: UserComponent,
       },
       {
-        path: 'stock', component: StockComponent, canActivate: [AuthGuard, AdminGuard]
+        path: 'stock', component: StockComponent,
       },
     ]
   }
