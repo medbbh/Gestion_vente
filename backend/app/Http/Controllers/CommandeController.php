@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Commande;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class CommandeController extends Controller
 {
@@ -11,9 +12,15 @@ class CommandeController extends Controller
     {
         return Commande::all();
     }
+
     public function getCommandes($id)
     {
-        $commande = Commande::all()->where('client_id',$id)->get();
+        // Validate the id to make sure it's an integer and a valid user id
+        if (!User::find($id)) {
+            return response()->json(['error' => 'Invalid user ID'], 400);
+        }
+    
+        $commande = Commande::where('client_id', $id)->get();
         return response()->json($commande);
     }
 
@@ -42,7 +49,6 @@ class CommandeController extends Controller
     {
         return Commande::findOrFail($id);
     }
-
 
     public function statusUpdate(Request $request,$id){
  

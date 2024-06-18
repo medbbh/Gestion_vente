@@ -27,6 +27,11 @@ export class CommandeService {
       observe: 'response',
     });
   }
+  userCommande(id:any): Observable<HttpResponse<Commande[]>> {
+    return this.http.get<Commande[]>(`${environment.api}/auth/getcommandes/${id}`, {
+      observe: 'response',
+    });
+  }
 
   getCommandeById(id: number): Observable<HttpResponse<Commande[]>> {
     return this.http.get<Commande[]>(`${environment.api}/auth/commandes/${id}`, {

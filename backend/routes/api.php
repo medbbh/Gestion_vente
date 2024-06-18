@@ -32,10 +32,10 @@ Route::group([
     Route::get('/UpdateProfile/{id}', [UserController::class, 'show']);
     Route::put('/UpdateProfile', [UserController::class, 'update'] );
     Route::apiResource('commandes',CommandeController::class);
-    Route::put('statusUpdate/{id}', [CommandeController::class, 'statusUpdate'] );
+    Route::get('commandes',[CommandeController::class, 'index']);
+    Route::get('getcommandes/{id}',[CommandeController::class, 'getCommandes']);
+    Route::put('statusUpdate/{id}', [CommandeController::class, 'statusUpdate']);
     Route::get('/user/montant/{id}', [UserController::class, 'getMontant']);
     Route::put('/user/editMontant/{id}', [UserController::class, 'editMontant']);
-
-
 });
 

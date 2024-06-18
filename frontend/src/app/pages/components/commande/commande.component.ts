@@ -21,11 +21,11 @@ export class CommandeComponent implements OnInit {
   constructor(private panierService: PanierService, private commandeService: CommandeService, private produitService: ServiceService) { }
 
   ngOnInit(): void {
-    this.fetchCommandes();
+    this.fetchCommandes(Number(localStorage.getItem('userId')));
   }
 
-  fetchCommandes() {
-    this.commandeService.listCommande().subscribe((response: HttpResponse<Commande[]>) => {
+  fetchCommandes(id:any) {
+    this.commandeService.userCommande(id).subscribe((response: HttpResponse<Commande[]>) => {
       this.commandes = response.body || [];
 
       // Preload products for all commandes
