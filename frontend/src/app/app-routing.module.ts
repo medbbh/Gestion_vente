@@ -15,6 +15,7 @@ import { CommandeComponent } from './pages/components/commande/commande.componen
 import { ProduitComponent } from './pages/components/produit/produit.component';
 import { UserComponent } from './pages/components/user/user.component';
 import { StockComponent } from './pages/components/stock/stock.component';
+import { AdminCommandeComponent } from './pages/components/admin-commande/admin-commande.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,9 @@ const routes: Routes = [
       },
       {
         path: 'stock', component: StockComponent,
+      },
+      {
+        path: 'commande', component: AdminCommandeComponent,
       },
     ]
   }

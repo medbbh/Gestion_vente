@@ -11,37 +11,61 @@ class CommandeController extends Controller
     {
         return Commande::all();
     }
+    public function getCommandes($id)
+    {
+        $commande = Commande::all()->where('client_id',$id)->get();
+        return response()->json($commande);
+    }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'client_id' => 'required|numeric',
-        'product_id' => 'required|numeric',
-        'quantite' => 'required|numeric',
-        'montant_total' => 'required|numeric',
-    ]);
+    {
+        $request->validate([
+            'client_id' => 'required|numeric',
+            'product_id' => 'required|numeric',
+            'quantite' => 'required|numeric',
+            'montant_total' => 'required|numeric',
+        ]);
 
-    $commande = new Commande($request->only([
-    'client_id',
-    'product_id',
-    'quantite',
-    'montant_total'
-]));
+        $commande = new Commande($request->only([
+        'client_id',
+        'product_id',
+        'quantite',
+        'montant_total'
+    ]));
 
-    
+        $commande->save();
 
-    $commande->save();
-
-    return response()->json($commande, 201);
-}
-
-
-
-
+        return response()->json($commande, 201);
+    }
 
     public function show($id)
     {
         return Commande::findOrFail($id);
+    }
+
+
+    public function statusUpdate(Request $request,$id){
+ 
+        if (Commande::where('id', $id)->exists()) {
+            $commande = Commande::find($id);
+            if($commande->statut == 'en attente'){
+                $commande->statut = 'preparation de la commande';
+            }
+            else if($commande->statut == 'preparation de la commande'){
+                $commande->statut = 'commande en route';
+            }
+            else if($commande->statut == 'commande en route'){
+                $commande->statut = 'livré';
+            }
+            $commande->save();
+            return response()->json([
+                'message' => "Commande status  updated successfully, new status $commande->statut"
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Commande not found'
+            ], 404);
+        }
     }
 
     public function destroy($id)

@@ -11,7 +11,12 @@ import { Produit } from '../interfaces/produit';
 })
 export class CommandeService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private httpClient:HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+ }
 
   placeOrder(commande: Commande) {
     return this.http.post(`${environment.api}/auth/commandes/`, commande);
@@ -23,8 +28,8 @@ export class CommandeService {
     });
   }
 
-  getCommandeById(id: number): Observable<HttpResponse<Commande>> {
-    return this.http.get<Commande>(`${environment.api}/auth/commandes/${id}`, {
+  getCommandeById(id: number): Observable<HttpResponse<Commande[]>> {
+    return this.http.get<Commande[]>(`${environment.api}/auth/commandes/${id}`, {
       observe: 'response'
     });
   }
@@ -44,4 +49,7 @@ export class CommandeService {
     return this.http.put(`${environment.api}/auth/user/editMontant/${id}`,{ new_montant: montant });
   }
   
+  statusUpdate(id:any){
+    return this.httpClient.put(environment.api +'/auth/statusUpdate/'+id,this.httpOptions)
+  }
 }
