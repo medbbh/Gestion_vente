@@ -21,6 +21,7 @@ import { ClientComponent } from './pages/components/client/client.component';
 import { AllProduitComponent } from './pages/components/all-produit/all-produit.component';
 import { ProduitDetailComponent } from './pages/components/produit-detail/produit-detail.component';
 import { CommandeComponent } from './pages/components/commande/commande.component';
+import { AdminCommandeComponent } from './pages/components/admin-commande/admin-commande.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CommandeComponent } from './pages/components/commande/commande.componen
     ProduitDetailComponent,
     StockComponent,
     CommandeComponent,
+    AdminCommandeComponent,
   ],
   imports: [
     BrowserModule,

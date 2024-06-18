@@ -26,15 +26,18 @@ Route::group([
     Route::get('/profile', [AuthController::class, 'userProfile']);
     Route::post('/refresh', [AuthController::class, 'refresh']);  
     Route::apiResource('products',ProductController::class);
+    Route::get('mostSold', [ProductController::class, 'getMostSoldProducts']);
+
     Route::apiResource('stocks',StockController::class);
     Route::get('users', [UserController::class, 'index']);
     Route::put('/user/roleUpdate/{id}', [UserController::class, 'RoleUpdate']);
     Route::get('/UpdateProfile/{id}', [UserController::class, 'show']);
     Route::put('/UpdateProfile', [UserController::class, 'update'] );
     Route::apiResource('commandes',CommandeController::class);
-    // Route::get('/user/balance/{id}', [UserController::class, 'getBalance']);
-    // Route::post('/user/deduct-balance/{id}', [UserController::class, 'deductBalance']);
-
-
+    Route::get('commandes',[CommandeController::class, 'index']);
+    Route::get('getcommandes/{id}',[CommandeController::class, 'getCommandes']);
+    Route::put('statusUpdate/{id}', [CommandeController::class, 'statusUpdate']);
+    Route::get('/user/montant/{id}', [UserController::class, 'getMontant']);
+    Route::put('/user/editMontant/{id}', [UserController::class, 'editMontant']);
 });
 

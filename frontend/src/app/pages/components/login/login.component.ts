@@ -42,10 +42,12 @@ export class LoginComponent implements OnInit {
         this.authState.setAuthState(true);
         this.loginForm.reset();
         
-        this.role == 0 ? this.router.navigate(['/client/']) : this.router.navigate(['/admin'])
+        this.role === 0 ? this.router.navigate(['/client/']) : this.router.navigate(['/admin/'])
       }
     );
   }
+  
+  
   // Handle response
   responseHandler(data:any) {
     this.token.handleData(data.access_token);

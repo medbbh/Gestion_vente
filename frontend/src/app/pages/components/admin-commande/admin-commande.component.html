@@ -9,7 +9,7 @@
 </div>
 
 
-<div *ngIf="!isLoading" class="relative overflow-x-auto m-10" >
+<div *ngIf="!isLoading" class="relative m-10 overflow-hidden" >
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -20,7 +20,7 @@
                     Nom du produit
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Prix unitaire
+                    Prix unitial
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Quantite
@@ -32,7 +32,10 @@
                     Date de commande
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Statut
+                    Status
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
                 </th>
             </tr>
         </thead>
@@ -57,20 +60,16 @@
                 <td class="px-6 text-gray-900">
                     {{commande.date_commande}}
                 </td>
-
-                <td class="px-6 text-yellow-900 font-bold" *ngIf="commande.statut == 'livré'">
+                <td class="px-6 text-gray-900">
                     {{commande.statut}}
                 </td>
-                <td class="px-6 text-gray-900 font-bold" *ngIf="commande.statut == 'en attente'" >
-                    {{commande.statut}}
+                <td class="px-6 text-gray-900">
+                    <button type="button" *ngIf="commande.statut == 'en attente'" (click)="statusUpdate(commande.id)" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-full text-sm sm:text-xs px-1 py-1 text-center ">preparation de la commande</button>
+                    <button type="button" *ngIf="commande.statut == 'preparation de la commande'" (click)="statusUpdate(commande.id)" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-full text-sm sm:text-xs px-2 py-2 text-center ">commande en route</button>
+                    <button type="button" *ngIf="commande.statut == 'commande en route'" (click)="statusUpdate(commande.id)" class="text-white bg-yellow-700 hover:bg-yello-800 font-medium rounded-full text-2xl sm:text-xs px-5 py-2 text-center ">livré</button>
+                    <fa-icon *ngIf="commande.statut == 'livré'"  [icon]="faCircleCheck" [classes]="['text-green-700','text-3xl','p-5']"></fa-icon>
                 </td>
-                <td class="px-6 text-green-900 font-bold" *ngIf="commande.statut == 'preparation de la commande'" >
-                    {{commande.statut}}
-                </td>
-                <td class="px-6 text-blue-900 font-bold" *ngIf="commande.statut == 'commande en route'" >
-                    {{commande.statut}}
-                </td>
-
+                
             </tr>
         </tbody>
     </table>

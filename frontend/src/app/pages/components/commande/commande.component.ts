@@ -13,17 +13,19 @@ import { Produit } from '../../interfaces/produit';
 })
 export class CommandeComponent implements OnInit {
 
-  commandes: Commande[] = [];
+  pages: number = 1;
+  commandes: any[] = [];
   produitsMap: { [key: number]: Produit } = {}; // Map to store fetched products
+  isLoading: boolean = true
 
   constructor(private panierService: PanierService, private commandeService: CommandeService, private produitService: ServiceService) { }
 
   ngOnInit(): void {
-    this.fetchCommandes();
+    this.fetchCommandes(Number(localStorage.getItem('userId')));
   }
 
-  fetchCommandes() {
-    this.commandeService.listCommande().subscribe((response: HttpResponse<Commande[]>) => {
+  fetchCommandes(id:any) {
+    this.commandeService.userCommande(id).subscribe((response: HttpResponse<Commande[]>) => {
       this.commandes = response.body || [];
 
       // Preload products for all commandes
@@ -37,6 +39,8 @@ export class CommandeComponent implements OnInit {
           });
         }
       });
+    this.isLoading = false
+
     });
   }
 

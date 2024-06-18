@@ -10,7 +10,6 @@ export class ClienGuard implements CanActivateChild {
   canActivateChild(): boolean {
     const role = localStorage.getItem('role');
 
-    // Assuming '0' represents the client role
     if (role == '0') {
       return true;
     } else {

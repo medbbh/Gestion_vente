@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserController extends Controller
@@ -29,9 +30,52 @@ class UserController extends Controller
              ], 404);
          }
      }
+
+     public function getMontant($id){
+        $montant = User::select('montant')->where('id', $id)->get();
+        return response()->json($montant);
+     }
+     public function editMontant(Request $request, $id)
+    {
+        // Validate the query parameter
+        $validator = Validator::make($request->all(), [
+            'new_montant' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation error',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+        $new_montant = $request->input('new_montant');
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        if ($user->montant > $new_montant) {
+            $user->montant = $user->montant - $new_montant;
+            $user->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Montant updated successfully',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Montant not sufficient',
+            ], 400);
+        }
+    }
     
-
-
      //================Update pprofil =================
      public function show($id)
     {

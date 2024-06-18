@@ -29,6 +29,12 @@ export class ServiceService {
     });
   }
 
+  mostSold(): Observable<HttpResponse<Produit[]>> {
+    return this.http.get<Produit[]>(`${environment.api}/auth/mostSold`, {
+      observe: 'response',
+    });
+  }
+
   delete(id: number){
     return this.http.delete(`${environment.api}/auth/products/${id}`, {
       observe: 'response',
