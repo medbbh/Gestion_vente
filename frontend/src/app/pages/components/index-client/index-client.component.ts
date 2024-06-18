@@ -46,7 +46,7 @@ export class IndexClientComponent implements OnInit {
   }
 
   fetchProduits() {
-    this.produitService.listProduit().subscribe((response: HttpResponse<Produit[]>) => {
+    this.produitService.mostSold().subscribe((response: HttpResponse<Produit[]>) => {
       const data: Produit[] = response.body || [];
       this.produits = data;
     });

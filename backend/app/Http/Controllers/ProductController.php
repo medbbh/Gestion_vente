@@ -5,12 +5,38 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Commande;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     public function index()
     {
         return Product::all();
+    }
+
+    public function getMostSoldProducts()
+    {
+        // Retrieve the top 4 most sold products
+        $mostSoldProducts = Commande::select('product_id', DB::raw('SUM(quantite) as total_quantity'))
+            ->groupBy('product_id')
+            ->orderBy('total_quantity', 'desc')
+            ->take(4)
+            ->get();
+
+        // Fetch product details and attach total quantities sold
+        $products = $mostSoldProducts->map(function ($item) {
+            $product = Product::find($item->product_id);
+            $product->total_quantity_sold = $item->total_quantity;
+            return $product;
+        });
+
+        // Check if products are found
+        if ($products->isNotEmpty()) {
+            return response()->json($products);
+        } else {
+            return response()->json(['message' => 'No products found'], 404);
+        }
     }
 
     public function store(Request $request)

@@ -26,6 +26,8 @@ Route::group([
     Route::get('/profile', [AuthController::class, 'userProfile']);
     Route::post('/refresh', [AuthController::class, 'refresh']);  
     Route::apiResource('products',ProductController::class);
+    Route::get('mostSold', [ProductController::class, 'getMostSoldProducts']);
+
     Route::apiResource('stocks',StockController::class);
     Route::get('users', [UserController::class, 'index']);
     Route::put('/user/roleUpdate/{id}', [UserController::class, 'RoleUpdate']);

@@ -14,7 +14,7 @@ import { Produit } from '../../interfaces/produit';
 export class CommandeComponent implements OnInit {
 
   pages: number = 1;
-  commandes: Commande[] = [];
+  commandes: any[] = [];
   produitsMap: { [key: number]: Produit } = {}; // Map to store fetched products
   isLoading: boolean = true
 

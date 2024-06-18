@@ -20,13 +20,19 @@
                     Nom du produit
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Prix unitial
+                    Prix unitaire
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Quantite
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Prix total
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Date de commande
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Statut
                 </th>
             </tr>
         </thead>
@@ -48,6 +54,23 @@
                 <td class="px-6 text-gray-900">
                     {{commande.montant_total}} MRU
                 </td>
+                <td class="px-6 text-gray-900">
+                    {{commande.date_commande}}
+                </td>
+
+                <td class="px-6 text-yellow-900 font-bold" *ngIf="commande.statut == 'livré'">
+                    {{commande.statut}}
+                </td>
+                <td class="px-6 text-gray-900 font-bold" *ngIf="commande.statut == 'en attente'" >
+                    {{commande.statut}}
+                </td>
+                <td class="px-6 text-green-900 font-bold" *ngIf="commande.statut == 'preparation de la commande'" >
+                    {{commande.statut}}
+                </td>
+                <td class="px-6 text-blue-900 font-bold" *ngIf="commande.statut == 'commande en route'" >
+                    {{commande.statut}}
+                </td>
+
             </tr>
         </tbody>
     </table>
