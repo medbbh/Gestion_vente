@@ -50,7 +50,8 @@ class CommandeController extends Controller
         return Commande::findOrFail($id);
     }
 
-    public function statusUpdate(Request $request,$id){
+    public function statusUpdate(Request $request,$id)
+    {
  
         if (Commande::where('id', $id)->exists()) {
             $commande = Commande::find($id);
